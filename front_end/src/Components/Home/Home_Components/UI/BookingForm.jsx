@@ -12,7 +12,7 @@ const BookingForm = (props) => {
   const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState("white");
+  const [color, setColor] = useState("white");
 
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -24,14 +24,11 @@ const BookingForm = (props) => {
     }
   };
 
-  const handleColorChange = (color) => {
-    setSelectedColor(color);
-  };
-
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Ngăn chặn hành vi submit mặc định của form
 
     if (!userData.user_id) {
+      // Kiểm tra người dùng đã đăng nhập hay chưa
       alert("Hãy đăng nhập để tiếp tục!");
       return;
     }
@@ -41,7 +38,7 @@ const BookingForm = (props) => {
       carId: car_id,
       userId: userData.user_id,
       quantity: quantity,
-      color: selectedColor,
+      color: color,
     };
 
     axios
@@ -97,17 +94,22 @@ const BookingForm = (props) => {
           <h6 className="mr-4">Màu sắc</h6>
           <div className="flex">
             <div
-              className={`w-8 h-8 rounded-full mr-2 ${
-                selectedColor === "white" ? "border-red-500" : ""
-              } bg-gray-300`}
-              onClick={() => handleColorChange("white")}
-            ></div>
+              className={`w-8 h-8 rounded-full mr-2 bg-gray-300 flex items-center justify-center relative`}
+              onClick={() => setColor("white")}
+            >
+              {color === "white" && (
+                <i className="ri-check-line text-green-500 absolute text-xl font-semibold"></i>
+              )}
+            </div>
+
             <div
-              className={`w-8 h-8 rounded-full ${
-                selectedColor === "black" ? "border-red-500" : ""
-              } bg-black`}
-              onClick={() => handleColorChange("black")}
-            ></div>
+              className={`w-8 h-8 rounded-full bg-black flex items-center justify-center relative `}
+              onClick={() => setColor("black")}
+            >
+              {color === "black" && (
+                <i className="ri-check-line text-green-500 absolute text-xl font-semibold"></i>
+              )}
+            </div>
           </div>
         </div>
       </Form>
