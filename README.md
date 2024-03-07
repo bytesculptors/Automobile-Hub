@@ -1,17 +1,10 @@
 
 
-# Rental Car Web Application
-
-This repository contains the source code and documentation for a web application designed to facilitate car rental services. The application allows users to browse, book, and manage their car rental reservations.
+# Automobile Hub
 
 ## Team Information
 
-- Team Name: 6466
-- Team Members:
-  - Ngô Đăng Hoàng Anh
-  - Nguyễn Đăng Hải
-  - Đỗ Minh Sáng
-  - Trần Tuấn Nghĩa
+
 
 ## Features
 
