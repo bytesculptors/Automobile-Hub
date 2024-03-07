@@ -38,8 +38,10 @@ const Header = () => {
   const user = useSelector(state => state.user);
   const handleLogout = () => {
     dispatch(clearUser());
-    navigate("/home");
+    window.localStorage.clear();
     window.location.reload();
+    navigate("/home");
+    
   };
   const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
 
