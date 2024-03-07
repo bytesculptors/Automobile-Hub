@@ -31,11 +31,16 @@ const About = () => {
                 </h2>
 
                 <p className="section__description">
-                  Theo thống kê, hằng năm có hơn 10000 vụ tai nạn giao thông. Bên cạnh những lý do chủ quan thì những đặc điểm không hợp lý của xe cũng đóng góp cho con số ấy.
+                  Theo thống kê, hằng năm có hơn 10000 vụ tai nạn giao thông.
+                  Bên cạnh những lý do chủ quan thì những đặc điểm không hợp lý
+                  của xe cũng đóng góp cho con số ấy.
                 </p>
 
                 <p className="section__description">
-                Lái xe an toàn là nghĩa vụ của mỗi người tham gia giao thông. 6466 Shop luôn cung cấp những chiếc xe hiện đại, thiết kế thân thiện với người dùng, có đủ trang thiết bị để chuyến đi được an toàn nhất.
+                  Lái xe an toàn là nghĩa vụ của mỗi người tham gia giao thông.
+                  Automobile Hub luôn cung cấp những chiếc xe hiện đại, thiết kế
+                  thân thiện với người dùng, có đủ trang thiết bị để chuyến đi
+                  được an toàn nhất.
                 </p>
 
                 <div className=" d-flex align-items-center gap-3 mt-4">
@@ -50,18 +55,6 @@ const About = () => {
                 </div>
               </div>
             </Col>
-          </Row>
-        </Container>
-      </section>
-
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Đội ngũ</h6>
-              <h2 className="section__title">Các thành viên</h2>
-            </Col>
-            <OurMembers />
           </Row>
         </Container>
       </section>

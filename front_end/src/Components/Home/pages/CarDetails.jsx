@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import carData from "../assets/data/carData";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Helmet from "../Home_Components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
 import BookingForm from "../Home_Components/UI/BookingForm";
@@ -11,6 +11,12 @@ const CarDetails = () => {
   const { slug } = useParams();
 
   const singleCarItem = carData.find((item) => item.carName === slug);
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,7 +37,7 @@ const CarDetails = () => {
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                    {singleCarItem.price.toLocaleString("vi-VN")} VNĐ / Ngày
+                    {singleCarItem.price.toLocaleString("vi-VN")}.000 VNĐ 
                   </h6>
                 </div>
 
@@ -39,57 +45,136 @@ const CarDetails = () => {
                   {singleCarItem.description}
                 </p>
 
-                <div
-                  className=" d-flex align-items-center mt-3"
-                  style={{ columnGap: "4rem" }}
-                >
-                  <span className=" d-flex align-items-center gap-1 section__description">
-                    <i
-                      class="ri-settings-2-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.automatic}
-                  </span>
-
-                  <span className=" d-flex align-items-center gap-1 section__description">
-                    <i
-                      class="ri-timer-flash-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.speed}
-                  </span>
+                <div className="mt-3">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="pr-8">
+                          <i
+                            className="ri-settings-2-line mr-2"
+                            style={{ color: "#f9a826" }}
+                          ></i>
+                          {singleCarItem.automatic}
+                        </td>
+                        <td className="pr-8">
+                          <i
+                            className="ri-timer-flash-line mr-2"
+                            style={{ color: "#f9a826" }}
+                          ></i>
+                          {singleCarItem.speed}
+                        </td>
+                        <td className="pr-8">
+                          <i
+                            className="ri-gas-station-fill mr-2"
+                            style={{ color: "#f9a826" }}
+                          ></i>
+                          {singleCarItem.fuel}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="pr-8">
+                          <i
+                            className="ri-wheelchair-line mr-2"
+                            style={{ color: "#f9a826" }}
+                          ></i>
+                          {singleCarItem.seatType}
+                        </td>
+                        <td className="pr-8">
+                          <i
+                            className="ri-building-2-line mr-2"
+                            style={{ color: "#f9a826" }}
+                          ></i>
+                          {singleCarItem.brand}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="mt-5">
+                  <Button color="primary" onClick={toggleModal}>
+                    Xem chi tiết thông số
+                  </Button>
                 </div>
 
-                <div
-                  className=" d-flex align-items-center mt-3"
-                  style={{ columnGap: "2.8rem" }}
-                >
-                  <span className=" d-flex align-items-center gap-1 section__description">
-                    <i class="ri-gas-station-fill" style={{ color: "#f9a826" }}></i>{" "}
-                    {singleCarItem.fuel}
-                  </span>
-
-                  <span className=" d-flex align-items-center gap-1 section__description">
-                    <i
-                      class="ri-wheelchair-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.seatType}
-                  </span>
-
-                  <span className=" d-flex align-items-center gap-1 section__description">
-                    <i
-                      class="ri-building-2-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.brand}
-                  </span>
-                </div>
+                <Modal isOpen={modalOpen} toggle={toggleModal}>
+                  <ModalHeader toggle={toggleModal}>
+                    Chi tiết thông số
+                  </ModalHeader>
+                  <ModalBody>
+                    <table className="w-full border-collapse border border-gray-300">
+                      <tbody>
+                        <tr className="border border-gray-300">
+                          <td className="px-4 py-2 font-bold border border-gray-300">
+                            Đặc điểm
+                          </td>
+                          <td className="px-4 py-2 font-bold border border-gray-300">
+                            Thông số chi tiết
+                          </td>
+                        </tr>
+                        <tr className="border border-gray-300">
+                          <td className="px-4 py-2 border border-gray-300">
+                            Hộp số
+                          </td>
+                          <td className="px-4 py-2 border border-gray-300">
+                            <i className="ri-settings-2-line mr-2 text-yellow-600"></i>
+                            {singleCarItem.automatic}
+                          </td>
+                        </tr>
+                        <tr className="border border-gray-300">
+                          <td className="px-4 py-2 border border-gray-300">
+                            Tốc độ
+                          </td>
+                          <td className="px-4 py-2 border border-gray-300">
+                            <i className="ri-timer-flash-line mr-2 text-yellow-600"></i>
+                            {singleCarItem.speed}
+                          </td>
+                        </tr>
+                        <tr className="border border-gray-300">
+                          <td className="px-4 py-2 border border-gray-300">
+                            Nhiên liệu
+                          </td>
+                          <td className="px-4 py-2 border border-gray-300">
+                            <i className="ri-gas-station-fill mr-2 text-yellow-600"></i>
+                            {singleCarItem.fuel}
+                          </td>
+                        </tr>
+                        <tr className="border border-gray-300">
+                          <td className="px-4 py-2 border border-gray-300">
+                            Số ghế
+                          </td>
+                          <td className="px-4 py-2 border border-gray-300">
+                            <i className="ri-wheelchair-line mr-2 text-yellow-600"></i>
+                            {singleCarItem.seatType}
+                          </td>
+                        </tr>
+                        <tr className="border border-gray-300">
+                          <td className="px-4 py-2 border border-gray-300">
+                            Hãng xe
+                          </td>
+                          <td className="px-4 py-2 border border-gray-300">
+                            <i className="ri-building-2-line mr-2 text-yellow-600"></i>
+                            {singleCarItem.brand}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="secondary" onClick={toggleModal}>
+                      Đóng
+                    </Button>
+                  </ModalFooter>
+                </Modal>
               </div>
-              
+
               <div className="booking-info mt-5">
                 <h5 className="mb-4 fw-bold ">Thông tin đặt hàng</h5>
-                <BookingForm item={{ car_id:singleCarItem.car_id, price:singleCarItem.price }} />
+                <BookingForm
+                  item={{
+                    car_id: singleCarItem.car_id,
+                    price: singleCarItem.price,
+                  }}
+                />
               </div>
             </Col>
 

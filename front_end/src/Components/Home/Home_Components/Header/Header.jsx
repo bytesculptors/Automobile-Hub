@@ -59,40 +59,44 @@ const Header = () => {
             </Col>
 
             <Col lg="6" md="6" sm="6">
-
-              {user.user_name ? (
-                console.log(1),
-                <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                  
-                  <Link to="/thong_tin" className="d-flex align-items-center gap-1">
-                    <i className="ri-login-circle-line"></i> Trang cá nhân
-                  </Link>
-                  <span onClick={handleLogout}>
-                  <Link to="/home" className="d-flex align-items-center gap-1">
-                    <i className="ri-user-line"></i> Đăng xuất
-                  </Link>
-                  </span>
-                </div>
-
-
-
-              ) : (
-                console.log(2),
-
-
-                <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                  <Link to="/login" className="d-flex align-items-center gap-1">
-                    <i className="ri-login-circle-line"></i> Đăng nhập
-                  </Link>
-                  <Link to="/signup" className="d-flex align-items-center gap-1">
-                    <i className="ri-user-line"></i> Đăng ký
-                  </Link>
-                </div>
-              )}
+              {user.user_name
+                ? (console.log(1),
+                  (
+                    <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+                      <Link
+                        to="/thong_tin"
+                        className="d-flex align-items-center gap-1"
+                      >
+                        <i className="ri-login-circle-line"></i> Trang cá nhân
+                      </Link>
+                      <span onClick={handleLogout}>
+                        <Link
+                          to="/home"
+                          className="d-flex align-items-center gap-1"
+                        >
+                          <i className="ri-user-line"></i> Đăng xuất
+                        </Link>
+                      </span>
+                    </div>
+                  ))
+                : (console.log(2),
+                  (
+                    <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+                      <Link
+                        to="/login"
+                        className="d-flex align-items-center gap-1"
+                      >
+                        <i className="ri-login-circle-line"></i> Đăng nhập
+                      </Link>
+                      <Link
+                        to="/signup"
+                        className="d-flex align-items-center gap-1"
+                      >
+                        <i className="ri-user-line"></i> Đăng ký
+                      </Link>
+                    </div>
+                  ))}
             </Col>
-
-
-
           </Row>
         </Container>
       </div>
@@ -106,9 +110,7 @@ const Header = () => {
                 <h1>
                   <Link to="/home" className=" d-flex align-items-center gap-2">
                     <i class="ri-car-line"></i>
-                    <span>
-                      6466 <br /> Shop
-                    </span>
+                    <span>Automobile <br />Hub</span>
                   </Link>
                 </h1>
               </div>
@@ -154,8 +156,6 @@ const Header = () => {
         </Container>
       </div>
 
-
-
       {/* ========== main navigation =========== */}
 
       <div className="main__navbar">
@@ -178,24 +178,21 @@ const Header = () => {
                     {item.display}
                   </NavLink>
                 ))}
-
               </div>
             </div>
 
             <div className="nav__right">
-
-            <button className="header__btn btn ">
+              <button className="header__btn btn ">
                 <Link to="/home">
-                  <i></i> {user.user_name ? `Xin chào, ${user.user_name}` : "Xin chào mừng đã đến website của chúng tôi!"}
+                  <i></i>{" "}
+                  {user.user_name
+                    ? `Xin chào, ${user.user_name}`
+                    : "Xin chào mừng đã đến website của chúng tôi!"}
                 </Link>
               </button>
-             
-                  
-
             </div>
           </div>
         </Container>
-
       </div>
     </header>
   );

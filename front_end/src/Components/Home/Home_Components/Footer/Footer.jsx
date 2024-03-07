@@ -36,7 +36,7 @@ const Footer = () => {
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <i class="ri-car-line"></i>
                   <span>
-                    Dịch vụ <br /> thuê ô tô
+                    Dịch vụ <br /> cung cấp ô tô
                   </span>
                 </Link>
               </h1>
