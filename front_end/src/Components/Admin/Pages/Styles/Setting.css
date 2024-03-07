@@ -1,0 +1,50 @@
+.profile_data {
+  display: flex;
+  margin-left: 270px;
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.user_info1 {
+  display: inline;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.label {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.input {
+  margin-top: 5px;
+  margin-left: 15px;
+  border-radius: 8px;
+}
+
+.submit_buttom {
+  margin-left: 150px;
+  background-color: rgb(27, 167, 27);
+  color: rgb(19, 16, 16);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.avatar {
+    margin-left: 40px;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+.readOnly{
+  background-color: #f0f0f0; /* Màu nền */
+  color: #888888; /* Màu chữ */
+  cursor: not-allowed;
+}

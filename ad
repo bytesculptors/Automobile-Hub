@@ -1,0 +1,175 @@
+[33mcommit ca4345dafff4e6010ccdec86105b23945cee324c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: 3181471 2e57fb4
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sat May 13 15:56:38 2023 +0700
+
+    Merge branch 'Sang'
+
+[33mcommit 3181471721649ab70d9f03bbddff8b1dacd179f4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sat May 13 15:52:42 2023 +0700
+
+    reset
+
+[33mcommit 2e57fb479c04942bb604ee756c760db8e5ca4029[m[33m ([m[1;32mSang[m[33m)[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sat May 13 15:41:21 2023 +0700
+
+    merge code 2 nhanh Sang va Nghia
+
+[33mcommit fe3f7a2bfd2f2d1e527755ea302d6b79489791c8[m[33m ([m[1;31morigin/Sang[m[33m)[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sat May 13 00:11:41 2023 +0700
+
+    hoan thanh viec chinh sua booking và profile
+
+[33mcommit e6cc563836f2b10c30e2df4dc09d23101383d06e[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Fri May 12 23:23:53 2023 +0700
+
+    sua loi hien thi thoi gian
+
+[33mcommit 4c46f25f72698de38bcab182d95e579cbf9ea04f[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Thu May 11 15:13:51 2023 +0700
+
+    hoan thanh code back_end
+
+[33mcommit 726a36b5eb7ef2ea5cd60f5c8ce02479c33cd028[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Thu May 11 11:17:19 2023 +0700
+
+    hoan thanh profile
+
+[33mcommit e7f904e595631a689c2ffee34f10e022ea2903c8[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Wed May 10 23:55:52 2023 +0700
+
+    Hoan thanh code back_end cho change profile
+
+[33mcommit 997421aeefb0286c1d95aa92faa7be46de7314e3[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Wed May 10 23:10:57 2023 +0700
+
+    Them booking back_end
+
+[33mcommit bfd24ffea436aa815c32f7ae573a1c90e2802ca3[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Wed May 10 22:05:50 2023 +0700
+
+    hoan thanh phan code back_end cho dashboard
+
+[33mcommit 0a203560ea74071ee27835b30e879e4864df87d2[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Mon May 8 10:41:09 2023 +0700
+
+    them tinh nang lay thong tin xe
+
+[33mcommit c8eaf3d5a9031e61cfd57aa4c444503b378f56f5[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sun May 7 10:46:24 2023 +0700
+
+    Lay du lieu oto tu mysql
+
+[33mcommit c0471864953ffab129e500907a974b8b608f8048[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sun May 7 08:39:52 2023 +0700
+
+    them tinh nang logout
+
+[33mcommit bd11183a7c21bda6c31f01bceaa50478f3cd8251[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sat May 6 13:12:52 2023 +0700
+
+    add user flow : homePage -> Login -> AdminPage or UserPage and render Homepage when start web_app
+
+[33mcommit 1fb1f7bf0fc51991e25fe4212904818007fa01ba[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Fri May 5 22:44:12 2023 +0700
+
+    Update global variable userData used for login and home page
+
+[33mcommit 3a84588cca474cb6f841f62fb7bd994e479379cf[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Sun Apr 23 13:25:32 2023 +0700
+
+    commit login signup backend
+
+[33mcommit 9bb6a5263df5961afcb01b1070672f60d5d28a34[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Wed Apr 19 21:05:06 2023 +0700
+
+    rework
+
+[33mcommit 74d1122d3654d96b700d00daa0ad8ae656cced99[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Mon Apr 17 23:57:13 2023 +0700
+
+    first commit
+
+[33mcommit 323423874dd3ea1ac372be4bb94418a5ec85d719[m
+Merge: 180cff7 a347231
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Mon Apr 17 23:56:10 2023 +0700
+
+    Merge branch 'Sang' of https://github.com/scallop2003/6466 into Sang
+
+[33mcommit 180cff77ddac281e3855e581ca7af62dcc96942d[m
+Author: dominhsang-34 <dosangnd2020@gmail.com>
+Date:   Mon Apr 17 23:52:35 2023 +0700
+
+    first commit
+
+[33mcommit a347231d8f93aa48adaf995f6322d696fa284466[m[33m ([m[1;31morigin/Hai[m[33m, [m[1;32mHai[m[33m)[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Fri Mar 24 15:44:26 2023 +0700
+
+    Add sidebar
+
+[33mcommit 0fc4d50f9fe61deda454aeb8854382db8ea2826a[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Fri Mar 24 10:12:42 2023 +0700
+
+    Finish header
+
+[33mcommit 3e7979ad62efc15927d0a18a2850d069b08b1573[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Fri Mar 24 07:22:51 2023 +0700
+
+    Add sign up screen
+
+[33mcommit d1ed43f5834feef0b978c51e2d8290e98cd1ca3d[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Thu Mar 23 22:37:42 2023 +0700
+
+    Add sign up screen
+
+[33mcommit 0fc2679bf51d931bb5314849933512897ab348e0[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Thu Mar 23 22:22:11 2023 +0700
+
+    Add css file
+
+[33mcommit b9ca0945d30f10573dbee1b445dbeb43363f0217[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Thu Mar 23 22:07:35 2023 +0700
+
+    Build log in screen
+
+[33mcommit 34eb9dd92aaf127c5ce4fba8efc5d45b3cec2aad[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Thu Mar 23 12:46:47 2023 +0700
+
+    Add log in screen
+
+[33mcommit 2440295185ef14ff5167af602f6ce33db6399a65[m
+Author: Tuan Nghia <tuannghia20062003@gmmail.com>
+Date:   Thu Mar 23 12:44:25 2023 +0700
+
+    Test commit
+
+[33mcommit e40f863cefe2eff0316809de195d9604ba03694e[m
+Author: scallop2003 <123816908+scallop2003@users.noreply.github.com>
+Date:   Thu Mar 23 11:40:10 2023 +0700
+
+    Initial commit

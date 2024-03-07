@@ -1,0 +1,102 @@
+.dashboard_content {
+  /* position: fixed; */
+  top: calc(100% - 70%);
+  /* left: 50%; */
+  margin-left: 270px;
+  margin-top: 70px;
+  /* transform: translate(-50%, -50%); */
+}
+.table_content {
+  display: block;
+  position: relative;
+}
+
+.table_content table {
+  display: block;
+  visibility: visible;
+  /* Các thuộc tính CSS khác cho bảng của bạn */
+}
+
+.table_content.hidden + .total_user {
+  margin-top: 0;
+  position: static !important;
+  font-size: 2rem;
+}
+
+.car_image {
+  text-decoration: none;
+}
+
+.car_table_header {
+  /* margin-left: 100px; */
+  margin-bottom: 20px;
+}
+.car_table_header button {
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.add_car_button {
+  position: flex;
+  border-radius: 10%;
+  background-color: aquamarine;
+}
+.total_user {
+  position: flex;
+  bottom: 10px;
+  font-size: 2rem;
+}
+/* UserCard */
+.user_info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  position: absolute;
+
+  background: #ffffff;
+}
+
+.user_details {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  gap: 20px;
+  background: #b0eea3;
+}
+
+.user_details img {
+  width: 100px;
+  height: 100px;
+  flex: 0 0 auto;
+  margin-right: 10px;
+  margin-bottom: 80px;
+}
+
+.info p span {
+  font-size: 0.9rem;
+  color: rgb(204, 40, 40);
+  text-shadow: 0ch;
+}
+
+.delete_button {
+  position: flex;
+  /* margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  text-indent: 0px; */
+  /* height: 40.7px; */
+}

@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+}
+
+.table_content {
+  max-height: 300px; /* Đặt chiều cao tối đa của bảng */
+  overflow: auto; /* Hiển thị thanh cuộn dọc khi nội dung vượt quá kích thước */
+}
+
+.table_content.hidden + .total_user {
+  display: none; /* Ẩn phần tử total_user khi bảng được thu gọn */
+}
+
+
+.table_content {
+  display: block;
+  position: relative;
+}
+
+.table_content table {
+  display: block;
+  visibility: visible;
+  /* Các thuộc tính CSS khác cho bảng của bạn */
+}
+
+.table_content.hidden + .total_user {
+  margin-top: 0;
+  position: static !important;
+  font-size: 2rem;
+}
+.booking_content {
+  text-align: left;
+}
+
+.booking_content table {
+  margin-left: 0;
+}
+
+.profile-head {
+  transform: translateY(5rem);
+}
+
+.emp-profile {
+  padding: 3%;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.profile-img {
+  position: relative;
+  width: 15vw;
+  height: 15vw;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.profile-img .file {
+  position: relative;
+  overflow: hidden;
+  margin-top: -20%;
+  width: 70%;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
+  background: #212529b8;
+}
+
+.profile-img .file input {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.profile-head h5 {
+  color: #333;
+}
+
+.profile-head h6 {
+  color: #0062cc;
+}
+
+.profile-edit-btn {
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  padding: 2%;
+  background: #0062cc;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10%;
+}
+
+.profile-tab label {
+  font-weight: 600;
+}
+
+.profile-tab p {
+  font-weight: 600;
+  color: #0062cc;
+}
+
+.nav-tabs {
+  margin-top: 5%;
+  border: none;
+  justify-content: center;
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: 2%;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  padding: 1.5rem 2.5rem;
+  border-radius: 0;
+  font-weight: 600;
+  color: #333;
+  transition: background-color .5s;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #0062cc;
+  color: #fff;
+}
+
+.nav-tabs .nav-link.active {
+  border: none;
+  border-bottom: 3px solid #0062cc;
+}
+
+.tab-pane {
+  margin-top: 5%;
+  padding: 2%;
+  font-size: 15px;
+  color: #333;
+  border: 1px solid #dee2e6;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.edit-profile-btn {
+  font-size: 16px;
+  color: #fff;
+  padding: 5px 30px;
+  background-color: #0062cc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-group-text {
+  background-color: #0062cc;
+  color: #fff;
+  border: none;
+}
+
+.input-group input {
+  border: none;
+  border-radius: 0;
+  margin-left: -2px;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.custom-file-label {
+  cursor: pointer;
+  border: none;
+  padding-left: 0;
+}
+
+.custom-file-label::after {
+  content: "Chọn file";
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  }
+  
+  .custom-file-input:hover .custom-file-label::after {
+  background: #0069d9;
+  }
+  
+  .custom-file-input:active .custom-file-label::after {
+  background: #0062cc;
+  }
+  
+  .custom-file-input:focus .custom-file-label::after {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+  }
+
+  
