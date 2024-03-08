@@ -19,7 +19,7 @@ const AboutSection = ({ aboutClass }) => {
             <div className="about__section-content">
               <h4 className="section__subtitle">Về chúng tôi</h4>
               <h2 className="section__title">
-                Chào mừng đến với dịch vụ cung cấp ô tô 
+                Chào mừng đến với dịch vụ cung cấp ô tô
               </h2>
               <p className="section__description">
                 <h5 className="greeting fw-bold mt-3">
@@ -30,32 +30,39 @@ const AboutSection = ({ aboutClass }) => {
                 hàng luôn có sự phát triển, điều đó có được là nhờ Quý khách
                 hàng đã tin cậy, lựa chọn chúng tôi làm bạn đồng hành cùng Quý
                 khách trên mọi nẻo đường. Chúng tôi luôn mang đến giá thành thấp
-                nhất, chất lượng cao nhất, phù hợp với mọi đối tượng khách hàng.
+                nhất, chất lượng cao nhất.
               </p>
 
-              <div className="about__section-item d-flex align-items-center">
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Luôn luôn nỗ lực và
-                  thực hiện cam kết phục vụ Quý khách hàng hơn cả mong đợi.
-                </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="about__section-item d-flex align-items-center">
+                  <p className="section__description d-flex align-items-center gap-2">
+                    <i className="ri-checkbox-circle-line"></i> Luôn lấy chất
+                    lượng là yếu tố hàng đầu. Chúng tôi cam kết sẽ cung cấp sản
+                    phẩm và dịch vụ chất lượng cao nhất.
+                  </p>
+                </div>
 
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Thực hiện xây dựng nếp
-                  văn hóa và luôn luôn chấp hành nghiêm chỉnh khi tham gia giao
-                  thông.
-                </p>
-              </div>
+                <div className="about__section-item d-flex align-items-center">
+                  <p className="section__description d-flex align-items-center gap-2">
+                    <i className="ri-checkbox-circle-line"></i> Luôn
+                    sẵn lòng thay đổi và cải thiện để nâng cao chất lượng dịch
+                    vụ và sản phẩm của mình.
+                  </p>
+                </div>
 
-              <div className="about__section-item d-flex align-items-center">
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Không ngừng đầu tư
-                  trang thiết bị, phương tiện phục vụ chất lượng.
-                </p>
+                <div className="about__section-item d-flex align-items-center">
+                  <p className="section__description d-flex align-items-center gap-2">
+                    <i className="ri-checkbox-circle-line"></i> Không ngừng đầu
+                    tư trang thiết bị, phương tiện phục vụ chất lượng.
+                  </p>
+                </div>
 
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Luôn lắng nghe tiếp
-                  thu ý kiến của khách hàng, sẵn sàng thay đổi để tốt hơn.
-                </p>
+                <div className="about__section-item d-flex align-items-center">
+                  <p className="section__description d-flex align-items-center gap-2">
+                    <i className="ri-checkbox-circle-line"></i> Luôn
+                    đặt đối tác làm trung tâm của mọi quyết định và hành động.
+                  </p>
+                </div>
               </div>
             </div>
           </Col>

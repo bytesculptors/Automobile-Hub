@@ -10,7 +10,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 const navLinks = [
   {
     path: "/home",
-    display: "Nhà của tôi",
+    display: "Trang chủ",
   },
   {
     path: "/about",

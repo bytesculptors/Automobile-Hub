@@ -90,7 +90,7 @@ const CarDetails = () => {
                     </tbody>
                   </table>
                 </div>
-                <div className="mt-5">
+                <div className="mt-3">
                   <Button color="primary" onClick={toggleModal}>
                     Xem chi tiết thông số
                   </Button>
