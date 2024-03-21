@@ -8,7 +8,7 @@ import AboutSection from "../Home_Components/UI/AboutSection";
 import ServicesList from "../Home_Components/UI/ServicesList";
 import carData from "../assets/data/carData";
 import CarItem from "../Home_Components/UI/CarItem";
-
+import SeeMoreCard from "../Home_Components/UI/SeeMoreCard";
 import BlogList from "../Home_Components/UI/BlogList";
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
       {/* =========== about section ================ */}
       <AboutSection aboutClass="aboutPage" />
       {/* ========== services section ============ */}
-      <section className="mt-5">
+      {/* <section className="mt-5">
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
@@ -32,19 +32,40 @@ const Home = () => {
             <ServicesList />
           </Row>
         </Container>
-      </section>
+      </section> */}
       {/* =========== car offer section ============= */}
       <section>
         <Container className="mt-5">
+          <Col lg="12" className="text-center mb-5">
+            <h2>Khám phá những sản phẩm</h2>
+            <h6>đến từ những hãng xe nổi tiếng</h6>
+          </Col>
           <Row>
-            <Col lg="12" className="text-center mb-5">
-              <h6 className="section__subtitle">Đi kèm với</h6>
-              <h2 className="section__title">Nhiều ưu đãi</h2>
+            <Col lg="12" className="text-left">
+              <h2>Toyota</h2>
             </Col>
-
-            {carData.slice(0, 6).map((item) => (
+            {carData.slice(0, 5).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
+            <SeeMoreCard />
+          </Row>
+          <Row>
+            <Col lg="12" className="text-left">
+              <h2>Mazda</h2>
+            </Col>
+            {carData.slice(0, 5).map((item) => (
+              <CarItem item={item} key={item.id} />
+            ))}
+            <SeeMoreCard />
+          </Row>
+          <Row>
+            <Col lg="12" className="text-left">
+              <h2>KIA</h2>
+            </Col>
+            {carData.slice(0, 5).map((item) => (
+              <CarItem item={item} key={item.id} />
+            ))}
+            <SeeMoreCard />
           </Row>
         </Container>
       </section>
