@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/header.css";
 import { clearUser } from '../../../../Redux/userSlice';
 import Dropdown from 'react-bootstrap/Dropdown'
-
+import { Badge } from "@mui/material";
 
 const navLinks = [
   {
@@ -112,7 +112,10 @@ const Header = () => {
                 <h1>
                   <Link to="/home" className=" d-flex align-items-center gap-2">
                     <i class="ri-car-line"></i>
-                    <span>Automobile <br />Hub</span>
+                    <span>
+                      Automobile <br />
+                      Hub
+                    </span>
                   </Link>
                 </h1>
               </div>
@@ -148,9 +151,15 @@ const Header = () => {
               sm="0"
               className=" d-flex align-items-center justify-content-end "
             >
-              <button className="header__btn btn ">
-                <Link to="/contact">
-                  <i class="ri-phone-line"></i> Liên hệ ngay
+              <button className="text-3xl">
+                <Link className="no-underline text-black" to="/order">
+                  {user.order_items.length === 0 ? (
+                    <i class="ri-shopping-cart-2-fill"></i>
+                  ) : (
+                    <Badge badgeContent={user.order_items.length} color="error">
+                      <i class="ri-shopping-cart-2-fill"></i>
+                    </Badge>
+                  )}
                 </Link>
               </button>
             </Col>
