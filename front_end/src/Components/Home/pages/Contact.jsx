@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../Home_Components/Helmet/Helmet";
 import CommonSection from "../Home_Components/UI/CommonSection";
-
 import "../styles/contact.css";
 
 const socialLinks = [

@@ -28,10 +28,10 @@ const HeroSlider = () => {
         <Container>
           <div className="slider__content ">
             <h4 className="text-light mb-3">
-              Automobile Hub Xin Chào Mừng Quý Khách
+              Chào mừng đến với Automobile Hub
             </h4>
             <h1 className="text-light mb-4">
-              Đặt xe ngay để tận hưởng chuyến đi với mức giá hấp dẫn!
+              Khám phá những sản phẩm mới!
             </h1>
 
             <button className="btn reserve__btn mt-4">

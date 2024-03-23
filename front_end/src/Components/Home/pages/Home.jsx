@@ -20,25 +20,11 @@ const Home = () => {
       </section>
       {/* =========== about section ================ */}
       <AboutSection aboutClass="aboutPage" />
-      {/* ========== services section ============ */}
-      {/* <section className="mt-5">
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Khám phá</h6>
-              <h2 className="section__title">Các dịch vụ phổ biến</h2>
-            </Col>
-
-            <ServicesList />
-          </Row>
-        </Container>
-      </section> */}
-      {/* =========== car offer section ============= */}
       <section>
         <Container className="mt-5">
           <Col lg="12" className="text-center mb-5">
             <h2>Khám phá những sản phẩm</h2>
-            <h6>đến từ những hãng xe nổi tiếng</h6>
+            <h6>đến từ các nhà cung cấp xe của chúng tôi</h6>
           </Col>
           <Row>
             <Col lg="12" className="text-left">

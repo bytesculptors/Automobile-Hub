@@ -4,13 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../styles/booking-form.css";
 import { Form, FormGroup } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import { addOrderItem } from "../../../../Redux/userSlice";
 
 const BookingForm = (props) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
-  const { car_id, price } = props.item;
+  const orderData = useSelector((state) => state.user.order_items);
+  const { car_id, price, car_name, car_img } = props.item;
   const navigate = useNavigate();
-
+  const [newOrderItem, setNewOrderItem] = useState({
+    supplier: "",
+    car_name: car_name,
+    car_id: 0,
+    quantity: 0,
+    car_img: car_img
+  });
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("white");
 
@@ -23,40 +31,44 @@ const BookingForm = (props) => {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
-
+  
   const submitHandler = (event) => {
-    event.preventDefault(); // Ngăn chặn hành vi submit mặc định của form
-
+    setNewOrderItem({ car_name: car_name, car_img: car_img });
+    dispatch(addOrderItem(newOrderItem));
+    console.log(newOrderItem);
+    console.log(orderData);
+    event.preventDefault(); 
+    navigate("/order");
     if (!userData.user_id) {
-      // Kiểm tra người dùng đã đăng nhập hay chưa
       alert("Hãy đăng nhập để tiếp tục!");
       return;
     }
 
-    const bookingInfo = {
-      price: price * quantity,
-      carId: car_id,
-      userId: userData.user_id,
-      quantity: quantity,
-      color: color,
-    };
+    // const bookingInfo = {
+    //   price: price * quantity,
+    //   carId: car_id,
+    //   userId: userData.user_id,
+    //   quantity: quantity,
+    //   color: color,
+    // };
 
-    axios
-      .post("http://localhost:8082/new_booking", bookingInfo)
-      .then((res) => {
-        console.log(res);
-        if (res && res.data) {
-          window.location.href = "/my_booking";
-          alert("Đặt hàng thành công!");
-        } else {
-          console.log("Response data is null");
-          alert("Đặt hàng không thành công!");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(bookingInfo);
-      });
+    // axios
+    //   .post("http://localhost:8082/new_booking", bookingInfo)
+    //   .then((res) => {
+    //     console.log(car_name);
+    //     console.log(res);
+    //     navigate("/order");
+    //     // if (res && res.data) {
+    //     //   alert("Đặt hàng thành công!");
+    //     // } else {
+    //     //   console.log("Response data is null");
+    //     //   alert("Đặt hàng không thành công!");
+    //     // }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     console.log(bookingInfo);
+    //   });
   };
 
   return (

@@ -173,6 +173,8 @@ const CarDetails = () => {
                   item={{
                     car_id: singleCarItem.car_id,
                     price: singleCarItem.price,
+                    car_name: singleCarItem.carName,
+                    car_img: singleCarItem.imgUrl
                   }}
                 />
               </div>

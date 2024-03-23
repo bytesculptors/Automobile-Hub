@@ -8,6 +8,7 @@ import Blog from "../pages/Blog";
 import BlogDetails from "../pages/BlogDetails";
 import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
+import OrderPage from "../pages/OrderPage";
 
 const Routers = () => {
   return (

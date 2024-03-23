@@ -9,9 +9,10 @@ const initialState = {
   phone_number: "",
   citizenID: "",
   access: "",
-  user_images:"",
+  user_images: "",
   address: "",
   date_of_birth: "",
+  order_items: []
 };
 
 const userSlice = createSlice({
@@ -32,7 +33,6 @@ const userSlice = createSlice({
       state.date_of_birth = action.payload.date_of_birth;
     },
     clearUser: (state) => {
-      // Object.assign(state, initialState);
       state.user_id = 0;
       state.user_name = "";
       state.pass_word = "";
@@ -58,10 +58,26 @@ const userSlice = createSlice({
       state.address = action.payload.address;
       state.date_of_birth = action.payload.date_of_birth;
     },
+    addOrderItem: (state, action) => {
+      state.order_items.push(action.payload);
+    },
+    clearOrderItems: (state) => {
+      state.order_items = [];
+    },
+    updateOrderItems: (state, action) => {
+     state.order_items = action.payload
+    },
   },
-  },
+},
 );
 
-export const { setUser, clearUser, updateUser } = userSlice.actions;
+export const {
+  setUser,
+  clearUser,
+  updateUser,
+  addOrderItem,
+  clearOrderItems,
+  updateOrderItems,
+} = userSlice.actions;
 
 export default userSlice.reducer;
