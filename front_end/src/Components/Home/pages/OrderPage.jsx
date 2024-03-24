@@ -13,10 +13,10 @@ import {
 const OrderPage = () => {
   const dispatch = useDispatch();
   const getOrderData = useSelector((state) => state.user.order_items);
-  const [orderData, setOrderData] = useState(getOrderData);
-  console.log(orderData);
+  const [orderData, setOrderData] = useState(getOrderData)
+  
   const submit = () => {
-    console.log(orderData);
+    console.log(typeof getOrderData);
     dispatch(clearOrderItems());
   };
 
