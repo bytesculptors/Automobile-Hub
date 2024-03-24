@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Button } from "reactstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   clearOrderItems,
@@ -13,11 +13,17 @@ import {
 const OrderPage = () => {
   const dispatch = useDispatch();
   const getOrderData = useSelector((state) => state.user.order_items);
-  const [orderData, setOrderData] = useState(getOrderData)
-  
+
+  const [orderData, setOrderData] = useState(getOrderData);
+
+  useEffect(() => {
+    setOrderData(getOrderData)
+  }, [getOrderData]); 
+
   const submit = () => {
-    console.log(typeof getOrderData);
+    console.log(getOrderData);
     dispatch(clearOrderItems());
+    setOrderData([]);
   };
 
   return (
@@ -45,11 +51,10 @@ const OrderPage = () => {
                   <div className="flex items-center border-gray-100">
                     <span
                       onClick={() => {
-                        const currentQuantity = orderData[index].quantity - 1;
                         dispatch(
-                          updateOrderItems({
+                          updateOrderQuantity({
                             car_name: orderData[index].car_name,
-                            quantity: currentQuantity,
+                            quantity: orderData[index].quantity - 1,
                           })
                         );
                       }}

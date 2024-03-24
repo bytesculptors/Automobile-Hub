@@ -14,7 +14,6 @@ const BookingForm = (props) => {
   const { car_id, price, car_name, car_img } = props.item;
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-
   const [color, setColor] = useState("white");
   const [open, setOpen] = useState(false);
 
