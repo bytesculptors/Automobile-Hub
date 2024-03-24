@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/booking-form.css";
 import { Form, FormGroup } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { addOrderItem } from "../../../../Redux/userSlice";
-
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 const BookingForm = (props) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
   const orderData = useSelector((state) => state.user.order_items);
   const { car_id, price, car_name, car_img } = props.item;
   const navigate = useNavigate();
-  const [newOrderItem, setNewOrderItem] = useState({
-    supplier: "",
-    car_name: car_name,
-    car_id: 0,
-    quantity: 0,
-    car_img: car_img
-  });
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState("white");
 
-  const handleIncrement = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+  const [color, setColor] = useState("white");
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   const handleDecrement = () => {
@@ -31,46 +35,24 @@ const BookingForm = (props) => {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
-  
+
   const submitHandler = (event) => {
-    setNewOrderItem({ car_name: car_name, car_img: car_img });
-    dispatch(addOrderItem(newOrderItem));
-    console.log(newOrderItem);
+    const numOfCar = quantity;
+    dispatch(
+      addOrderItem({ car_name: car_name, car_img: car_img, quantity: numOfCar })
+    );
     console.log(orderData);
-    event.preventDefault(); 
-    navigate("/order");
+    event.preventDefault();
+    handleClick();
     if (!userData.user_id) {
       alert("Hãy đăng nhập để tiếp tục!");
       return;
     }
-
-    // const bookingInfo = {
-    //   price: price * quantity,
-    //   carId: car_id,
-    //   userId: userData.user_id,
-    //   quantity: quantity,
-    //   color: color,
-    // };
-
-    // axios
-    //   .post("http://localhost:8082/new_booking", bookingInfo)
-    //   .then((res) => {
-    //     console.log(car_name);
-    //     console.log(res);
-    //     navigate("/order");
-    //     // if (res && res.data) {
-    //     //   alert("Đặt hàng thành công!");
-    //     // } else {
-    //     //   console.log("Response data is null");
-    //     //   alert("Đặt hàng không thành công!");
-    //     // }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     console.log(bookingInfo);
-    //   });
   };
 
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
   return (
     <div className="d-flex flex-column align-items-start mb-5">
       <Form className="d-inline-block me-4 mb-4">
@@ -127,6 +109,18 @@ const BookingForm = (props) => {
       </Form>
       <div className="payment text-end">
         <button onClick={submitHandler}>Thêm vào đơn đặt hàng</button>
+      </div>
+      <div>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            variant="filled"
+            sx={{ width: "100%" }}
+          >
+            Thêm vào đơn hàng thành công!
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );

@@ -6,18 +6,19 @@ import { useState } from "react";
 
 import {
   clearOrderItems,
-  updateOrderItems
+  updateOrderItems,
+  updateOrderQuantity,
 } from "../../../Redux/userSlice";
 
 const OrderPage = () => {
   const dispatch = useDispatch();
   const getOrderData = useSelector((state) => state.user.order_items);
-  const [orderData, setOrderData] = useState(getOrderData)
+  const [orderData, setOrderData] = useState(getOrderData);
   console.log(orderData);
   const submit = () => {
-    console.log(orderData)
-    dispatch(clearOrderItems())
-  }
+    console.log(orderData);
+    dispatch(clearOrderItems());
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 pt-20">
@@ -42,13 +43,24 @@ const OrderPage = () => {
                 </div>
                 <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                   <div className="flex items-center border-gray-100">
-                    <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                    <span
+                      onClick={() => {
+                        const currentQuantity = orderData[index].quantity - 1;
+                        dispatch(
+                          updateOrderItems({
+                            car_name: orderData[index].car_name,
+                            quantity: currentQuantity,
+                          })
+                        );
+                      }}
+                      className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                    >
                       {" "}
                       -{" "}
                     </span>
                     <input
                       className="h-8 w-8 border bg-white text-center text-xs outline-none"
-                      value="2"
+                      value={orderData[index].quantity}
                       min="1"
                     />
                     <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
@@ -60,11 +72,10 @@ const OrderPage = () => {
                     <p className="text-sm">259.000 ₭</p>
                     <div
                       onClick={() => {
-                        const updatedOrderData = [...orderData]; 
+                        const updatedOrderData = [...orderData];
                         updatedOrderData.splice(index, 1);
                         dispatch(updateOrderItems(updatedOrderData));
                         setOrderData(updatedOrderData);
-                        
                       }}
                       className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
                     >

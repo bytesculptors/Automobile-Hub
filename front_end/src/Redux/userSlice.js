@@ -12,7 +12,7 @@ const initialState = {
   user_images: "",
   address: "",
   date_of_birth: "",
-  order_items: []
+  order_items: [],
 };
 
 const userSlice = createSlice({
@@ -59,17 +59,38 @@ const userSlice = createSlice({
       state.date_of_birth = action.payload.date_of_birth;
     },
     addOrderItem: (state, action) => {
-      state.order_items.push(action.payload);
+      const { car_name, car_img, quantity } = action.payload;
+      if (Array.isArray(state.order_items)) {
+        const existingItemIndex = state.order_items.findIndex(
+          (item) => item.car_name === car_name
+        );
+
+        if (existingItemIndex !== -1) {
+          state.order_items[existingItemIndex].quantity += quantity;
+        } else {
+          state.order_items.push({ car_name, car_img, quantity });
+        }
+      }
     },
     clearOrderItems: (state) => {
       state.order_items = [];
     },
     updateOrderItems: (state, action) => {
-     state.order_items = action.payload
+      state.order_items = action.payload;
+    },
+    updateOrderQuantity: (state, action) => {
+      if (Array.isArray(state.order_items)) {
+        const existingItemIndex = state.order_items.findIndex(
+          (item) => item.car_name === action.payload.car_name
+        );
+        if (existingItemIndex !== -1) {
+          state.order_items[existingItemIndex].quantity =
+            action.payload.quantity;
+        }
+      }
     },
   },
-},
-);
+});
 
 export const {
   setUser,
@@ -78,6 +99,7 @@ export const {
   addOrderItem,
   clearOrderItems,
   updateOrderItems,
+  updateOrderQuantity,
 } = userSlice.actions;
 
 export default userSlice.reducer;
