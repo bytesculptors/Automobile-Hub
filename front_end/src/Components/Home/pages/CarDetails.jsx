@@ -179,13 +179,6 @@ const CarDetails = () => {
                 />
               </div>
             </Col>
-
-            {/* <Col lg="7" className="mt-5">
-              <div className="booking-info mt-5">
-                <h5 className="mb-4 fw-bold ">Thông tin đặt hàng</h5>
-                <BookingForm />
-              </div>
-            </Col> */}
           </Row>
         </Container>
       </section>

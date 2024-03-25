@@ -59,7 +59,7 @@ const userSlice = createSlice({
       state.date_of_birth = action.payload.date_of_birth;
     },
     addOrderItem: (state, action) => {
-      const { car_name, car_img, quantity } = action.payload;
+      const { car_name, car_img, quantity, price } = action.payload;
       if (Array.isArray(state.order_items)) {
         const existingItemIndex = state.order_items.findIndex(
           (item) => item.car_name === car_name
@@ -68,7 +68,7 @@ const userSlice = createSlice({
         if (existingItemIndex !== -1) {
           state.order_items[existingItemIndex].quantity += quantity;
         } else {
-          state.order_items.push({ car_name, car_img, quantity });
+          state.order_items.push({ car_name, car_img, quantity, price });
         }
       }
     },

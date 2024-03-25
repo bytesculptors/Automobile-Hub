@@ -38,9 +38,10 @@ const BookingForm = (props) => {
   const submitHandler = (event) => {
     const numOfCar = quantity;
     dispatch(
-      addOrderItem({ car_name: car_name, car_img: car_img, quantity: numOfCar })
+      addOrderItem({ car_name: car_name, car_img: car_img, quantity: numOfCar, price: price})
     );
     console.log(orderData);
+    console.log(price)
     event.preventDefault();
     window.scrollTo(0,0)
     handleClick();

@@ -16,10 +16,22 @@ const OrderPage = () => {
   const getOrderData = useSelector((state) => state.user.order_items);
   const navigate = useNavigate();
   const [orderData, setOrderData] = useState(getOrderData);
+  const [price, setPrice] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  console.log(getOrderData);
 
   useEffect(() => {
-    setOrderData(getOrderData)
-  }, [getOrderData]); 
+    let totalPrice = 0;
+    let total = 0;
+    setOrderData(getOrderData);
+    getOrderData.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+      total += item.quantity;
+    });
+    setPrice(totalPrice);
+    setTotal(total);
+  }, [getOrderData]);
 
   const submit = () => {
     console.log(getOrderData);
@@ -36,7 +48,7 @@ const OrderPage = () => {
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
-            navigate('/cars')
+            navigate("/cars");
           }}
         >
           Tạo đơn đặt hàng
@@ -76,14 +88,13 @@ const OrderPage = () => {
                           dispatch(updateOrderItems(updatedOrderData));
                           setOrderData(updatedOrderData);
                         } else {
-                            dispatch(
-                             updateOrderQuantity({
-                               car_name: orderData[index].car_name,
-                               quantity: orderData[index].quantity - 1,
-                             })
-                           );
+                          dispatch(
+                            updateOrderQuantity({
+                              car_name: orderData[index].car_name,
+                              quantity: orderData[index].quantity - 1,
+                            })
+                          );
                         }
-                       
                       }}
                       className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
                     >
@@ -103,15 +114,20 @@ const OrderPage = () => {
                             quantity: orderData[index].quantity + 1,
                           })
                         );
-                      } 
-                      }
-                      className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                      }}
+                      className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                    >
                       {" "}
                       +{" "}
                     </span>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <p className="text-sm">259.000 ₭</p>
+                    <p className="text-sm">
+                      {(
+                        orderData[index].price * orderData[index].quantity
+                      ).toLocaleString("vi-VN")}{" "}
+                      VND
+                    </p>
                     <div
                       onClick={() => {
                         const updatedOrderData = [...orderData];
@@ -145,17 +161,19 @@ const OrderPage = () => {
         <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
           <div className="mb-2 flex justify-between">
             <p className="text-gray-700">Giá trị đơn dự kiến:</p>
-            <p className="text-gray-700">$129.99</p>
+            <p className="text-gray-700">{price.toLocaleString("vi-VN")} VND</p>
           </div>
           <div className="flex justify-between">
-            <p className="text-gray-700">Phí giao hàng:</p>
-            <p className="text-gray-700">$4.99</p>
+            <p className="text-gray-700">Số lượng sản phẩm:</p>
+            <p className="text-gray-700">{total}</p>
           </div>
           <hr className="my-4" />
           <div className="flex justify-between">
             <p className="text-lg font-bold">Tổng</p>
             <div className="">
-              <p className="mb-1 text-lg font-bold">$134.98 USD</p>
+              <p className="mb-1 text-lg font-bold">
+                {price.toLocaleString("vi-VN")} VND
+              </p>
             </div>
           </div>
           <button
