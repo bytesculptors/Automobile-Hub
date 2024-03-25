@@ -2,12 +2,22 @@ import React from "react";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/car-item.css";
+import { useNavigate } from "react-router-dom";
 
 const CarItem = (props) => {
   const { imgUrl, seatType, carName, automatic, speed, price } = props.item;
-
+  const navigate = useNavigate()
   return (
-    <Col lg="4" md="4" sm="6" className="mb-5">
+    <Col
+      lg="4"
+      md="4"
+      sm="6"
+      className="mb-5"
+      onClick={() => {
+        navigate(`/cars/${carName}`);
+        console.log("card");
+      }}
+    >
       <div className="car__item shadow-md relative hover:border-blue-500 hover:cursor-pointer hover:transform hover:-translate-y-1">
         <div className="car__img">
           <img src={imgUrl} alt="" className="w-100" />
@@ -30,14 +40,6 @@ const CarItem = (props) => {
               <i className="ri-timer-flash-line"></i> {speed}
             </span>
           </div>
-
-          <button className="w-50 car__item-btn car__btn-rent">
-            <Link to={`/cars/${carName}`}>Chọn</Link>
-          </button>
-
-          <button className="w-50 car__item-btn car__btn-details">
-            <Link to={`/cars/${carName}`}>Chi tiết</Link>
-          </button>
         </div>
       </div>
     </Col>
