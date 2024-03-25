@@ -42,6 +42,7 @@ const BookingForm = (props) => {
     );
     console.log(orderData);
     event.preventDefault();
+    window.scrollTo(0,0)
     handleClick();
     if (!userData.user_id) {
       alert("Hãy đăng nhập để tiếp tục!");
@@ -52,6 +53,8 @@ const BookingForm = (props) => {
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
+
+   
   return (
     <div className="d-flex flex-column align-items-start mb-5">
       <Form className="d-inline-block me-4 mb-4">

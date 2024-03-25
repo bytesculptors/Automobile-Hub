@@ -51,12 +51,20 @@ const OrderPage = () => {
                   <div className="flex items-center border-gray-100">
                     <span
                       onClick={() => {
-                        dispatch(
-                          updateOrderQuantity({
-                            car_name: orderData[index].car_name,
-                            quantity: orderData[index].quantity - 1,
-                          })
-                        );
+                        if (orderData[index].quantity - 1 == 0) {
+                          const updatedOrderData = [...orderData];
+                          updatedOrderData.splice(index, 1);
+                          dispatch(updateOrderItems(updatedOrderData));
+                          setOrderData(updatedOrderData);
+                        } else {
+                            dispatch(
+                             updateOrderQuantity({
+                               car_name: orderData[index].car_name,
+                               quantity: orderData[index].quantity - 1,
+                             })
+                           );
+                        }
+                       
                       }}
                       className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
                     >
@@ -68,7 +76,17 @@ const OrderPage = () => {
                       value={orderData[index].quantity}
                       min="1"
                     />
-                    <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+                    <span
+                      onClick={() => {
+                        dispatch(
+                          updateOrderQuantity({
+                            car_name: orderData[index].car_name,
+                            quantity: orderData[index].quantity + 1,
+                          })
+                        );
+                      } 
+                      }
+                      className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
                       {" "}
                       +{" "}
                     </span>
