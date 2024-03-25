@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   clearOrderItems,
@@ -13,7 +14,7 @@ import {
 const OrderPage = () => {
   const dispatch = useDispatch();
   const getOrderData = useSelector((state) => state.user.order_items);
-
+  const navigate = useNavigate();
   const [orderData, setOrderData] = useState(getOrderData);
 
   useEffect(() => {
@@ -26,8 +27,26 @@ const OrderPage = () => {
     setOrderData([]);
   };
 
+  if (!orderData || orderData.length === 0) {
+    return (
+      <div className="min-h-96 bg-gray-100 flex flex-col justify-center items-center">
+        <h1 className="text-2xl font-bold mb-4">
+          Hiện không có đơn đặt hàng nào
+        </h1>
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {
+            navigate('/cars')
+          }}
+        >
+          Tạo đơn đặt hàng
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100 pt-20">
+    <div className="min-h-screen bg-gray-100 pt-10">
       <h1 className="mb-10 text-center text-2xl font-bold">
         Thông tin đơn đặt hàng
       </h1>
