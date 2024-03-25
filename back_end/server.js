@@ -58,7 +58,7 @@ app.post('/login',
         })
     })
 
-app.post('/dashboard', (req, res) => {
+app.get('/dashboard', (req, res) => {
     if (req.body.key === 'get Car Data') {
         const sql = "SELECT * FROM cars";
         db.query(sql, (err, data) => {
@@ -160,7 +160,7 @@ app.post("/new_booking", (req, res) => {
     const start = new Date(newBooking.startDate);
     const end = new Date(newBooking.endDate);
     const days = Math.ceil(Math.abs(end - start) / (1000 * 60 * 60 * 24));
-    const totalPrice = days * newBooking.pRice;
+    const totalPrice = days * newBooking.price_per_day;
 
     const sql = "INSERT INTO bookings (user_id, car_id, start_date, end_date, total_price) VALUES (?, ?, ?, ?, ?)";
     const values = [
@@ -183,4 +183,40 @@ app.post("/new_booking", (req, res) => {
     })
 });
 
+//GET ALL CARS DETAILS
+app.get("/cars/all", (req, res) => {
+    const sql = "SELECT * FROM cars";
+    db.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.json("Error");
+        }
+        return res.json(data);
+    })
+})
+
+app.get("/cars/:brand_name", (req, res) => {
+    const brand_name = req.params.brand_name
+    const sql = `SELECT * FROM cars WHERE brand = '${brand_name}'`;
+    db.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.json("Error");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+})
+
+app.get("/brands", (req, res) => {
+    const sql = `SELECT DISTINCT brand FROM cars`;
+    db.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            return res.json("Error");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+})
 app.listen(8082, () => { console.log("listening"); })
