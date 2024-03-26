@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col } from "reactstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -6,6 +6,8 @@ import "../../styles/header.css";
 import { clearUser } from '../../../../Redux/userSlice';
 import Dropdown from 'react-bootstrap/Dropdown'
 import { Badge } from "@mui/material";
+import LoginModal from "../UI/LoginModal";
+
 
 const navLinks = [
   {
@@ -43,6 +45,7 @@ const Header = () => {
     navigate("/home");
     
   };
+  const [openLoginModal, setOpenLoginModal] = useState(false);
   const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
 
   return (
@@ -152,15 +155,26 @@ const Header = () => {
               className=" d-flex align-items-center justify-content-end "
             >
               <button className="text-3xl">
-                <Link className="no-underline text-black" to="/order">
-                  {user.order_items.length === 0 ? (
-                    <i class="ri-shopping-cart-2-fill"></i>
-                  ) : (
-                    <Badge badgeContent={user.order_items.length} color="error">
+                {user.user_id ? (
+                  <Link className="no-underline text-black" to="/order">
+                    {user.order_items.length === 0 ? (
                       <i class="ri-shopping-cart-2-fill"></i>
-                    </Badge>
-                  )}
-                </Link>
+                    ) : (
+                      <Badge
+                        badgeContent={user.order_items.length}
+                        color="error"
+                      >
+                        <i class="ri-shopping-cart-2-fill"></i>
+                      </Badge>
+                    )}
+                  </Link>
+                ) : (
+                    <div className="no-underline text-black" onClick={() => {
+                      setOpenLoginModal(true);
+                  }}>
+                    <i class="ri-shopping-cart-2-fill"></i>
+                  </div>
+                )}
               </button>
             </Col>
           </Row>
@@ -205,6 +219,12 @@ const Header = () => {
           </div>
         </Container>
       </div>
+      <LoginModal
+        open={openLoginModal}
+        handleClose={() => {
+          setOpenLoginModal(false);
+        }}
+      />
     </header>
   );
 };
