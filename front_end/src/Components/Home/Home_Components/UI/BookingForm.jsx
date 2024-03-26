@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { addOrderItem } from "../../../../Redux/userSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import LoginModal from "./LoginModal";
 const BookingForm = (props) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
@@ -16,6 +17,7 @@ const BookingForm = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("white");
   const [open, setOpen] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false)
 
   const handleClick = () => {
     setOpen(true);
@@ -25,7 +27,6 @@ const BookingForm = (props) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
@@ -36,26 +37,31 @@ const BookingForm = (props) => {
   };
 
   const submitHandler = (event) => {
-    const numOfCar = quantity;
-    dispatch(
-      addOrderItem({ car_name: car_name, car_img: car_img, quantity: numOfCar, price: price})
-    );
-    console.log(orderData);
-    console.log(price)
-    event.preventDefault();
-    window.scrollTo(0,0)
-    handleClick();
+     window.scrollTo(0, 0);
     if (!userData.user_id) {
-      alert("Hãy đăng nhập để tiếp tục!");
-      return;
+      setOpenLoginModal(true);
+    } else {
+      const numOfCar = quantity;
+      dispatch(
+        addOrderItem({
+          car_name: car_name,
+          car_img: car_img,
+          quantity: numOfCar,
+          price: price,
+        })
+      );
+      event.preventDefault();
+      handleClick();
     }
+
+
   };
 
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
-   
+
   return (
     <div className="d-flex flex-column align-items-start mb-5">
       <Form className="d-inline-block me-4 mb-4">
@@ -125,6 +131,9 @@ const BookingForm = (props) => {
           </Alert>
         </Snackbar>
       </div>
+      <LoginModal open={openLoginModal} handleClose={() => {
+        setOpenLoginModal(false);
+      }} />
     </div>
   );
 };

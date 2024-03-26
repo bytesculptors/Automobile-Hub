@@ -9,25 +9,25 @@ const CarItem = (props) => {
   const navigate = useNavigate()
   return (
     <Col
-      lg="4"
-      md="4"
-      sm="6"
+      lg="3"
+      md="3"
+      sm="4"
       className="mb-5"
       onClick={() => {
         navigate(`/cars/${carName}`);
         console.log("card");
       }}
     >
-      <div className="car__item shadow-md relative hover:border-blue-500 hover:cursor-pointer hover:transform hover:-translate-y-1">
+      <div className="car__item shadow-md relative hover:border-blue-500 hover:cursor-pointer hover:transform hover:-translate-y-2">
         <div className="car__img">
           <img src={imgUrl} alt="" className="w-100" />
         </div>
 
         <div className="car__item-content mt-4">
-          <h4 className="section__title text-center">{carName}</h4>
-          <h6 className="rent__price text-center mt-">
+          <h6 className="section__title text-center">{carName}</h6>
+          <div className="rent__price text-center">
             {price.toLocaleString("vi-VN")}.000 VNĐ
-          </h6>
+          </div>
 
           <div className="car__item-info d-flex align-items-center justify-content-between mt-3 mb-4">
             <span className="d-flex align-items-center gap-1">

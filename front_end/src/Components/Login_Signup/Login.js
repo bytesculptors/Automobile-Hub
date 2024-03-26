@@ -21,6 +21,7 @@ function Login() {
     }
 
     const handleSubmit = (event) => {
+        console.log(values)
         event.preventDefault();
         const err = Validation(values);
         setErrors(err);

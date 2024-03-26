@@ -30,7 +30,7 @@ const Home = () => {
             <Col lg="12" className="text-left">
               <h2>Toyota</h2>
             </Col>
-            {carData.slice(0, 5).map((item) => (
+            {carData.slice(0, 7).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
             <SeeMoreCard />
@@ -39,7 +39,7 @@ const Home = () => {
             <Col lg="12" className="text-left">
               <h2>Mazda</h2>
             </Col>
-            {carData.slice(0, 5).map((item) => (
+            {carData.slice(0, 7).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
             <SeeMoreCard />
@@ -48,7 +48,7 @@ const Home = () => {
             <Col lg="12" className="text-left">
               <h2>KIA</h2>
             </Col>
-            {carData.slice(0, 5).map((item) => (
+            {carData.slice(0, 7).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
             <SeeMoreCard />
