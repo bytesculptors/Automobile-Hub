@@ -4,7 +4,7 @@ import Validation from './LoginValidation'
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/userSlice';
-
+import "bootstrap/dist/css/bootstrap.css";
 function Login() {
     const dispatch = useDispatch();
     const [values, setValues] = useState({
