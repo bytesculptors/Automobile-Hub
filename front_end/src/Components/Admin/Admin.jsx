@@ -12,11 +12,11 @@ function Admin() {
       <Sidebar />
       <div className="main_layout xl:ml-80 pb-4 pr-2">
         <TopNav />
-        <div className="content">
+        <div className="content ml-4">
           <Routes>
             <Route
               path="/"
-              element={<Navigate to="dashboard" element={<Dashboard />} />}
+              element={<Navigate to="dashboard/home" element={<Dashboard />} />}
             ></Route>
             <Route path="dashboard/home" element={<Dashboard />}></Route>
             <Route path="dashboard/bookings" element={<Booking />}></Route>
