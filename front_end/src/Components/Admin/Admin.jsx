@@ -16,7 +16,9 @@ function Admin() {
           <Routes>
             <Route
               path="/"
-              element={<Navigate to="dashboard/home" element={<Dashboard />} />}
+              element={
+                <Navigate to="dashboard/analytics" element={<Dashboard />} />
+              }
             ></Route>
             <Route path="dashboard/analytics" element={<Dashboard />}></Route>
             <Route path="dashboard/transaction" element={<Booking />}></Route>

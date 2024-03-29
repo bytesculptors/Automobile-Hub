@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { updateUser } from '../../../Redux/userSlice';
-import { Avatar } from '@material-tailwind/react';
+import {
+  Avatar,
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
 
 function Setting() {
   const dispatch = useDispatch();
   const userData = useSelector(state => state.user);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(!open);
   const [user, setUser] = useState({
     access: userData.access,
     user_name: userData.user_name,
@@ -50,7 +59,6 @@ function Setting() {
                 size="xxl"
               />
             </div>
-            
           </div>
           {/* End of profile card */}
         </div>
@@ -95,7 +103,12 @@ function Setting() {
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Email</div>
                   <div className="px-4 py-2">
-                    <a className="text-blue-800" href={`mailto:${user.user_email}`}>{user.user_email}</a>
+                    <a
+                      className="text-blue-800"
+                      href={`mailto:${user.user_email}`}
+                    >
+                      {user.user_email}
+                    </a>
                   </div>
                 </div>
                 <div className="grid grid-cols-2">
@@ -121,13 +134,52 @@ function Setting() {
               </div>
             </div>
             <button
-              className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+              onClick={() => {
+                handleOpen();
+              }}
+              className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+            >
               Cập nhật thông tin
             </button>
           </div>
-          {/* End of about section */}
-          <div className="my-4"></div>
-          
+
+          <div className="opacity-75">
+            <Dialog
+              open={open}
+              handler={handleOpen}
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0.9, y: -100 },
+              }}
+              size="md"
+            >
+              <DialogHeader>Its a simple dialog.</DialogHeader>
+              <DialogBody>
+                The key to more success is to have a lot of pillows. Put it this
+                way, it took me twenty five years to get these plants, twenty
+                five years of blood sweat and tears, and I&apos;m never giving
+                up, I&apos;m just getting started. I&apos;m up to something. Fan
+                luv.
+              </DialogBody>
+              <DialogFooter>
+                <Button
+                  variant="text"
+                  color="red"
+                  onClick={handleOpen}
+                  className="mr-1"
+                >
+                  <span>Cancel</span>
+                </Button>
+                <Button
+                  variant="gradient"
+                  className="bg-green-600"
+                  onClick={handleOpen}
+                >
+                  <span>Confirm</span>
+                </Button>
+              </DialogFooter>
+            </Dialog>
+          </div>
         </div>
       </div>
     </div>
