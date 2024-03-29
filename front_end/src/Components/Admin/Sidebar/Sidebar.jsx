@@ -40,11 +40,11 @@ function Sidebar() {
                 {({ isActive }) => (
                   <Button
                     variant={isActive ? "gradient" : "text"}
-                    color={isActive ? "green" : "white"}
+                    color={isActive ? "blue" : "white"}
                     className="flex items-center gap-4 capitalize"
                     fullWidth
                   >
-                    <span className="text-base">
+                    <span className="text-2xl font-thin">
                       <i className={item.icon}></i>
                     </span>
                     <Typography

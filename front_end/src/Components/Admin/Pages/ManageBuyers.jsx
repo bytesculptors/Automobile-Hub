@@ -1,38 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-import { BookingContext } from '../../data/BookingContext'
+import React, { useContext, useEffect } from "react";
+import "./Styles/Booking.css";
 import { authorsTableData } from "../../data/authors-table-data";
 
-import './Styles/Booking.css'
-function Booking() {
-  const { bookingData } = useContext(BookingContext);
-  console.log(bookingData);
-  useEffect(() => {
-    console.log("booking", bookingData);
-  }, [bookingData]);
-
-  const getCurrentDate = () => {
-    const now = new Date();
-    return now.toISOString().split('T')[0];
-  };
-
-  const getStatus = (startDate, endDate) => {
-    const currentDate = getCurrentDate();
-
-    if (endDate < currentDate) {
-      return 'Đã trả';
-    } else if (startDate <= currentDate && endDate >= currentDate) {
-      return 'Đang thuê';
-    } else if (startDate > currentDate) {
-      return 'Chuẩn bị';
-    }
-
-    return '';
-  };
-
+function Buyer() {
   return (
     <div className="card mt-12">
       <div className="p-6 mx-3 rounded-xl shadow-xl shadow-gray-300 bg-gradient-to-tr from-gray-900 to-gray-800 -mt-10">
-        <h6 className="text-white text-lg mb-0">Manage Transactions</h6>
+        <h6 className="text-white text-lg mb-0">Manage Buyers</h6>
       </div>
       <div className="card-body overflow-x-scroll px-0 pt-0">
         <table className="w-full min-w-[640px] table-auto">
@@ -123,4 +97,4 @@ function Booking() {
   );
 }
 
-export default Booking
+export default Buyer;
