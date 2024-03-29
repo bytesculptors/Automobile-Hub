@@ -1,13 +1,13 @@
 const navLinks = [
   {
-    path: "/dashboard/home",
+    path: "/dashboard/analytics",
     icon: "ri-apps-2-line",
-    display: "Home",
+    display: "Analytics",
   },
   {
-    path: "/dashboard/bookings",
+    path: "/dashboard/transaction",
     icon: "ri-taxi-line",
-    display: "Booking",
+    display: "Transaction",
   },
 ];
   

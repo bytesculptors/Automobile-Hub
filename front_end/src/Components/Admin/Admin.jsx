@@ -18,8 +18,8 @@ function Admin() {
               path="/"
               element={<Navigate to="dashboard/home" element={<Dashboard />} />}
             ></Route>
-            <Route path="dashboard/home" element={<Dashboard />}></Route>
-            <Route path="dashboard/bookings" element={<Booking />}></Route>
+            <Route path="dashboard/analytics" element={<Dashboard />}></Route>
+            <Route path="dashboard/transaction" element={<Booking />}></Route>
             <Route path="dashboard/profile" element={<Setting />}></Route>
           </Routes>
         </div>
