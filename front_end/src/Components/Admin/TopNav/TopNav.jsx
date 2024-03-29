@@ -59,7 +59,7 @@ function TopNav() {
   });
   return (
     
-    <Navbar color="transparent" className="pl-0">
+    <Navbar color="transparent" className="pl-0 pr-1">
       <div className="flex items-center justify-between gap-4">
         <div>
           <Breadcrumbs separator="/" className="text-black items-center m-0">
