@@ -15,7 +15,7 @@ function Admin() {
       <Sidebar />
       <div className="main_layout xl:ml-80 pb-4 pr-2">
         <TopNav />
-        <div className="content ml-4">
+        <div className="content ml-4 mr-4">
           <Routes>
             <Route
               path="/"
@@ -29,6 +29,7 @@ function Admin() {
             <Route path="dashboard/suppliers" element={<Supplier />}></Route>
             <Route path="dashboard/buyers" element={<Buyer />}></Route>
             <Route path="dashboard/products" element={<Product />}></Route>
+            <Route path="dashboard/products/approval" element={<Product />}></Route>
           </Routes>
         </div>
       </div>
