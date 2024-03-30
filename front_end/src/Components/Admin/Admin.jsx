@@ -9,6 +9,7 @@ import Supplier from './Pages/ManageSuppliers';
 import "../Admin/Pages/Styles/Admin.css"
 import Buyer from './Pages/ManageBuyers';
 import Product from './Pages/ManageProducts';
+import Approval from './Pages/ProductsApproval';
 function Admin() {
   return (
     <div className="layout">
@@ -29,7 +30,7 @@ function Admin() {
             <Route path="dashboard/suppliers" element={<Supplier />}></Route>
             <Route path="dashboard/buyers" element={<Buyer />}></Route>
             <Route path="dashboard/products" element={<Product />}></Route>
-            <Route path="dashboard/products/approval" element={<Product />}></Route>
+            <Route path="dashboard/products/approval" element={<Approval />}></Route>
           </Routes>
         </div>
       </div>
