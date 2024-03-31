@@ -1,21 +1,71 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { updateUser } from '../../../Redux/userSlice';
-import {
-  Avatar,
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { updateUser } from "../../../Redux/userSlice";
+import { Avatar } from "@material-tailwind/react";
+import Modal from "@mui/material/Modal";
+import PropTypes from "prop-types";
+import { useSpring, animated } from "@react-spring/web";
+import Box from "@mui/material/Box";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+
+const Fade = React.forwardRef(function Fade(props, ref) {
+  const {
+    children,
+    in: open,
+    onClick,
+    onEnter,
+    onExited,
+    ownerState,
+    ...other
+  } = props;
+  const style = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: open ? 1 : 0 },
+    onStart: () => {
+      if (open && onEnter) {
+        onEnter(null, true);
+      }
+    },
+    onRest: () => {
+      if (!open && onExited) {
+        onExited(null, true);
+      }
+    },
+  });
+
+  return (
+    <animated.div ref={ref} style={style} {...other}>
+      {React.cloneElement(children, { onClick })}
+    </animated.div>
+  );
+});
+
+Fade.propTypes = {
+  children: PropTypes.element.isRequired,
+  in: PropTypes.bool,
+  onClick: PropTypes.any,
+  onEnter: PropTypes.func,
+  onExited: PropTypes.func,
+  ownerState: PropTypes.any,
+};
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 function Setting() {
   const dispatch = useDispatch();
-  const userData = useSelector(state => state.user);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(!open);
+  const userData = useSelector((state) => state.user);
   const [user, setUser] = useState({
     access: userData.access,
     user_name: userData.user_name,
@@ -33,15 +83,25 @@ function Setting() {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
+  const [openSnack, setOpenSnack] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [selectedField, setSelectedField] = React.useState("");
+  const handleOpen = (field) => {
+    setSelectedField(field);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8082/profile', user)
-      .then(res => {
+    axios
+      .post("http://localhost:8082/profile", user)
+      .then((res) => {
         dispatch(updateUser(user));
-        window.location.reload();
+        setOpen(false)
+        setOpenSnack(true)
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -63,7 +123,7 @@ function Setting() {
           {/* End of profile card */}
         </div>
         {/* Right Side */}
-        <div className="w-full md:w-9/12 mx-2 h-64">
+        <div className="w-full md:w-9/12 mx-2 h-48">
           {/* Profile tab */}
           {/* About Section */}
           <div className="bg-white p-3 shadow-sm rounded-sm">
@@ -77,9 +137,9 @@ function Setting() {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
@@ -88,97 +148,193 @@ function Setting() {
             </div>
             <div className="text-gray-700">
               <div className="grid md:grid-cols-2 text-sm">
+                {/* Access */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Access</div>
                   <div className="px-4 py-2">{user.access}</div>
                 </div>
+                {/* Username */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Username</div>
                   <div className="px-4 py-2">{user.user_name}</div>
                 </div>
+                {/* Password */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Password</div>
-                  <div className="px-4 py-2">{user.pass_word}</div>
+                  <div className="px-4 py-2">
+                    {user.pass_word}
+                    <i
+                      onClick={() => handleOpen("pass_word")}
+                      className="ri-edit-fill ml-2 cursor-pointer"
+                    ></i>
+                  </div>
                 </div>
+                {/* Email */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Email</div>
                   <div className="px-4 py-2">
-                    <a
-                      className="text-blue-800"
-                      href={`mailto:${user.user_email}`}
-                    >
-                      {user.user_email}
-                    </a>
+                    {user.user_email}
+                    <i
+                      onClick={() => handleOpen("user_email")}
+                      className="ri-edit-fill ml-2 cursor-pointer"
+                    ></i>
                   </div>
                 </div>
+                {/* Full Name */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Full Name</div>
-                  <div className="px-4 py-2">{user.full_name}</div>
+                  <div className="px-4 py-2">
+                    {user.full_name}
+                    <i
+                      onClick={() => handleOpen("full_name")}
+                      className="ri-edit-fill ml-2 cursor-pointer"
+                    ></i>
+                  </div>
                 </div>
+                {/* Citizen ID */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Citizen ID</div>
                   <div className="px-4 py-2">{user.citizenID}</div>
                 </div>
+                {/* Phone Number */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Phone Number</div>
-                  <div className="px-4 py-2">{user.phone_number}</div>
+                  <div className="px-4 py-2">
+                    {user.phone_number}
+                    <i
+                      onClick={() => handleOpen("phone_number")}
+                      className="ri-edit-fill ml-2 cursor-pointer"
+                    ></i>
+                  </div>
                 </div>
+                {/* Date of Birth */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Date of Birth</div>
                   <div className="px-4 py-2">{user.date_of_birth}</div>
                 </div>
+                {/* Address */}
                 <div className="grid grid-cols-2">
                   <div className="px-4 py-2 font-semibold">Address</div>
-                  <div className="px-4 py-2">{user.address}</div>
+                  <div className="px-4 py-2">
+                    {user.address}
+                    <i
+                      onClick={() => handleOpen("address")}
+                      className="ri-edit-fill ml-2 cursor-pointer"
+                    ></i>
+                  </div>
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => {
-                handleOpen();
-              }}
-              className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
-            >
-              Cập nhật thông tin
-            </button>
-          </div>
 
-          <div className="opacity-75">
-            <Dialog
+            {/* Modal */}
+            <Modal
+              aria-labelledby="spring-modal-title"
+              aria-describedby="spring-modal-description"
               open={open}
-              handler={handleOpen}
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0.9, y: -100 },
-              }}
-              size="md"
+              onClose={handleClose}
+              closeAfterTransition
             >
-              <DialogHeader>Its a simple dialog.</DialogHeader>
-              <DialogBody>
-                The key to more success is to have a lot of pillows. Put it this
-                way, it took me twenty five years to get these plants, twenty
-                five years of blood sweat and tears, and I&apos;m never giving
-                up, I&apos;m just getting started. I&apos;m up to something. Fan
-                luv.
-              </DialogBody>
-              <DialogFooter>
-                <Button
-                  variant="text"
-                  color="red"
-                  onClick={handleOpen}
-                  className="mr-1"
+              <Fade in={open}>
+                <Box sx={style}>
+                  <div className="flex flex-col mb-4">
+                    <label
+                      htmlFor="field"
+                      className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                    >
+                      {selectedField === "full_name"
+                        ? "Full Name"
+                        : selectedField === "user_email"
+                        ? "Email"
+                        : selectedField === "pass_word"
+                        ? "Password"
+                        : selectedField === "phone_number"
+                        ? "Phone Number"
+                        : selectedField === "address"
+                        ? "Address"
+                        : ""}
+                    </label>
+
+                    <div className="relative">
+                      <div className="absolute flex border border-transparent left-0 top-0 h-full w-10">
+                        <div className="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full">
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="h-5 w-5"
+                          >
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx={12} cy={7} r={4}></circle>
+                          </svg>
+                        </div>
+                      </div>
+
+                      <input
+                        id="field"
+                        name={selectedField}
+                        type="text"
+                        placeholder={
+                          selectedField === "full_name"
+                            ? "Full Name"
+                            : selectedField === "user_email"
+                            ? "Email"
+                            : selectedField === "pass_word"
+                            ? "Password"
+                            : selectedField === "phone_number"
+                            ? "Phone Number"
+                            : selectedField === "address"
+                            ? "Address"
+                            : ""
+                        }
+                        value={user[selectedField]}
+                        onChange={handleInputChange}
+                        className="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-end mt-2">
+                    <button
+                      onClick={handleClose}
+                      className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:bg-red-600 mr-2"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={handleSubmit}
+                      className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:bg-green-600"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </Box>
+              </Fade>
+            </Modal>
+            <div>
+              <Snackbar
+                open={openSnack}
+                autoHideDuration={6000}
+                onClose={() => {
+                  setOpenSnack(false);
+                }}
+              >
+                <Alert
+                  onClose={() => {
+                    setOpenSnack(false);
+                  }}
+                  severity="success"
+                  variant="filled"
+                  sx={{ width: "100%" }}
                 >
-                  <span>Cancel</span>
-                </Button>
-                <Button
-                  variant="gradient"
-                  className="bg-green-600"
-                  onClick={handleOpen}
-                >
-                  <span>Confirm</span>
-                </Button>
-              </DialogFooter>
-            </Dialog>
+                  Cập nhật thông tin thành công!
+                </Alert>
+              </Snackbar>
+            </div>
+            {/* End of Modal */}
           </div>
         </div>
       </div>
