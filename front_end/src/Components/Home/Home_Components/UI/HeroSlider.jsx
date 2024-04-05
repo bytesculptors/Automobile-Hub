@@ -41,7 +41,7 @@ const HeroSlider = () => {
         </Container>
       </div>
 
-      <div className="slider__item slider__item-02 mt0">
+      {/* <div className="slider__item slider__item-02 mt0">
         <Container>
           <div className="slider__content ">
             <h4 className="text-light mb-3">
@@ -73,7 +73,7 @@ const HeroSlider = () => {
             </button>
           </div>
         </Container>
-      </div>
+      </div> */}
     </Slider>
   );
 };
