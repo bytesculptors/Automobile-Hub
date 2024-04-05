@@ -21,28 +21,56 @@ function Customers() {
   }
 
   return (
-    <div className='layout'>
-      <div className='main_layout'>
-        <div className='content'>
-        <Header/>
-          <Routes>  
-            <Route path='/home' element={<Home onLoginSuccess={handleLoginSuccess} />}  />
-            <Route path='/about' element={<About onLoginSuccess={handleLoginSuccess} />} />
-            <Route path="/cars" element={<CarListing onLoginSuccess={handleLoginSuccess} />} />
-            <Route path="/cars/:slug" element={<CarDetails onLoginSuccess={handleLoginSuccess} />} />
-            <Route path="/blogs" element={<Blog onLoginSuccess={handleLoginSuccess} />} />
-            <Route path="/blogs/:slug" element={<BlogDetails onLoginSuccess={handleLoginSuccess} />} />
-            <Route path="/contact" element={<Contact onLoginSuccess={handleLoginSuccess} />} />
-            <Route path='thong_tin' element = {<MyProfile/>}></Route>
-            <Route path='/update_password' element = {<UpdatePassword/>}></Route>
-            <Route path='/my_booking' element = {<MyBooking/>}></Route>
-            <Route path='/' element={<Home onLoginSuccess={handleLoginSuccess} />} />  
-             <Route path="/order" element={<OrderPage />} />
+    <div className="layout">
+      <div className="main_layout">
+        <div className="content">
+          <Header />
+          <Routes>
+            <Route
+              path="/home"
+              element={<Home onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route
+              path="/about"
+              element={<About onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route
+              path="/cars"
+              element={<CarListing onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route
+              path="/cars/:slug"
+              element={<CarDetails onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route
+              path="/blogs"
+              element={<Blog onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route
+              path="/blogs/:slug"
+              element={<BlogDetails onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route
+              path="/contact"
+              element={<Contact onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route path="thong_tin" element={<MyProfile />}></Route>
+            <Route path="/update_password" element={<UpdatePassword />}></Route>
+            <Route path="/my_booking" element={<MyBooking />}></Route>
+            <Route path="/my_booking/detail" element={<MyBooking />}></Route>
+            <Route
+              path="/"
+              element={<Home onLoginSuccess={handleLoginSuccess} />}
+            />
+            <Route path="/order" element={<OrderPage />} />
             {/* <Route path='bookings' element = {<Booking/>}></Route>
             <Route path='profile' element = {<Setting/>}></Route> */}
-            <Route path="*" element={<NotFound onLoginSuccess={handleLoginSuccess} />} />
+            <Route
+              path="*"
+              element={<NotFound onLoginSuccess={handleLoginSuccess} />}
+            />
           </Routes>
-          <Footer/>
+          <Footer />
         </div>
       </div>
     </div>

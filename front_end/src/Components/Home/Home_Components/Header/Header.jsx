@@ -7,7 +7,18 @@ import { clearUser } from '../../../../Redux/userSlice';
 import Dropdown from 'react-bootstrap/Dropdown'
 import { Badge } from "@mui/material";
 import LoginModal from "../UI/LoginModal";
-
+import Avatar from "@mui/material/Avatar";
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
+import {
+  UserIcon,
+  ArrowUturnLeftIcon,
+  ShoppingBagIcon
+} from "@heroicons/react/24/solid";
 
 const navLinks = [
   {
@@ -46,7 +57,7 @@ const Header = () => {
         <Container>
           <Row>
             <Col lg="6" md="6" sm="6">
-              <div className="header__top__left">
+              <div className="header__top__left flex items-center">
                 <span>Bạn cần giúp đỡ?</span>
                 <span className="header__top__help">
                   <i class="ri-phone-fill"></i> +84 384103659
@@ -59,7 +70,7 @@ const Header = () => {
                 ? (console.log(1),
                   (
                     <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                      <Link
+                      {/* <Link
                         to="/thong_tin"
                         className="d-flex align-items-center gap-1"
                       >
@@ -72,7 +83,56 @@ const Header = () => {
                         >
                           <i className="ri-user-line"></i> Đăng xuất
                         </Link>
-                      </span>
+                      </span> */}
+                      <Menu>
+                        <MenuHandler>
+                          <Avatar
+                            alt="Remy Sharp"
+                            src={
+                              user.user_images
+                                ? user.user_images
+                                : "https://images.pexels.com/photos/2754200/pexels-photo-2754200.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                            }
+                            className="cursor-pointer"
+                          />
+                        </MenuHandler>
+                        <MenuList className="w-max border-0 list-menu p-1">
+                          <MenuItem
+                            color="lightBlue"
+                            ripple="light"
+                            className="flex items-center py-2 px-4 hover:bg-gray-100"
+                            onClick={() => {
+                              navigate("/thong_tin");
+                            }}
+                          >
+                            <UserIcon className="h-4 w-4 mr-2" />
+                            Thông tin cá nhân
+                          </MenuItem>
+                          <MenuItem
+                            color="lightBlue"
+                            ripple="light"
+                            className="flex items-center py-2 px-4 hover:bg-gray-100"
+                            onClick={() => {
+                              navigate("/my_booking");
+                            }}
+                          >
+                            <ShoppingBagIcon className="h-4 w-4 mr-2" />
+                            Đơn mua của tôi
+                          </MenuItem>
+                          <MenuItem
+                            color="lightBlue"
+                            ripple="light"
+                            className="flex items-center py-2 px-4 hover:bg-gray-100"
+                            onClick={() => {
+                              dispatch(clearUser());
+                              navigate("/home");
+                            }}
+                          >
+                            <ArrowUturnLeftIcon className="h-4 w-4 mr-2" />
+                            Đăng xuất
+                          </MenuItem>
+                        </MenuList>
+                      </Menu>
                     </div>
                   ))
                 : (console.log(2),
@@ -160,9 +220,12 @@ const Header = () => {
                     )}
                   </Link>
                 ) : (
-                    <div className="no-underline text-black" onClick={() => {
+                  <div
+                    className="no-underline text-black"
+                    onClick={() => {
                       setOpenLoginModal(true);
-                  }}>
+                    }}
+                  >
                     <i class="ri-shopping-cart-2-fill"></i>
                   </div>
                 )}
@@ -195,17 +258,6 @@ const Header = () => {
                   </NavLink>
                 ))}
               </div>
-            </div>
-
-            <div className="nav__right">
-              <button className="header__btn btn ">
-                <Link to="/home">
-                  <i></i>{" "}
-                  {user.user_name
-                    ? `Xin chào, ${user.user_name}`
-                    : "Xin chào mừng đã đến website của chúng tôi!"}
-                </Link>
-              </button>
             </div>
           </div>
         </Container>
