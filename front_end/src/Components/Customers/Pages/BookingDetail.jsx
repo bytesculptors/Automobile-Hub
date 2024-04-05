@@ -8,72 +8,115 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./Styles/main.css";
+import StepConnector, {
+  stepConnectorClasses,
+} from "@mui/material/StepConnector";
+import { styled } from "@mui/material/styles";
 
 const steps = [
-  "Gửi yêu cầu đặt hàng",
-  "Đàm phán với nhà cung cấp",
+    "Gửi yêu cầu đặt hàng",
+    "Đàm phán với nhà cung cấp",
     "Xác nhận đơn hàng",
     "Điền thông tin nhận hàng",
     "Thanh toán",
-  "Hoàn tất đơn hàng"
+    "Hoàn tất đơn hàng"
 ];
 
+const CustomConnector = styled(StepConnector)(({ theme }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {
+    top: 10,
+    left: "calc(-50% + 16px)",
+    right: "calc(50% + 16px)",
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: "#4caf50", 
+    },
+  },
+  [`&.${stepConnectorClasses.active}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: "#4caf50", 
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    borderColor:
+      theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
+    borderTopWidth: 3,
+    borderRadius: 1,
+  },
+}));
+
 function BookingDetail() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [skipped, setSkipped] = React.useState(new Set());
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
+    const isStepOptional = (step) => {
+        return step === 0;
 
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
+    };
 
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
+    const isStepSkipped = (step) => {
+        return skipped.has(step);
+    };
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
+    const handleNext = () => {
+        let newSkipped = skipped;
+        if (isStepSkipped(activeStep)) {
+            newSkipped = new Set(newSkipped.values());
+            newSkipped.delete(activeStep);
+        }
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setSkipped(newSkipped);
+    };
 
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      throw new Error("You can't skip a step that isn't optional.");
-    }
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
+    const handleSkip = () => {
+        if (!isStepOptional(activeStep)) {
+            throw new Error("You can't skip a step that isn't optional.");
+        }
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setSkipped((prevSkipped) => {
+            const newSkipped = new Set(prevSkipped.values());
+            newSkipped.add(activeStep);
+            return newSkipped;
+        });
+    };
+
+    const handleReset = () => {
+        setActiveStep(0);
+    };
 
     return (
       <div className="booking_content mx-20">
         <h3>Tiến trình đơn hàng #1</h3>
         <Box className="mt-4" sx={{ width: "100%" }}>
-          <Stepper activeStep={activeStep}>
+          <Stepper
+            activeStep={activeStep}
+            alternativeLabel
+            connector={<CustomConnector />}
+          >
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
               if (isStepOptional(index)) {
-                labelProps.optional = (
-                  <Typography variant="caption">Optional</Typography>
-                );
+                if (activeStep == 0) {
+                  labelProps.optional = (
+                    <Typography variant="caption">
+                      Chờ xác nhận yêu cầu
+                    </Typography>
+                  );
+                } else {
+                  labelProps.optional = (
+                    <Typography variant="caption">
+                      Đã xác nhận yêu cầu
+                    </Typography>
+                  );
+                }
               }
               if (isStepSkipped(index)) {
                 stepProps.completed = false;
