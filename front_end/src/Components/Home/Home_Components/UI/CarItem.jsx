@@ -5,8 +5,9 @@ import "../../styles/car-item.css";
 import { useNavigate } from "react-router-dom";
 
 const CarItem = (props) => {
-  const { imgUrl, seatType, carName, automatic, speed, price } = props.item;
-  const navigate = useNavigate()
+  const { imgUrl, carName, price } = props.item;
+  const navigate = useNavigate();
+
   return (
     <Col
       lg="3"
@@ -19,26 +20,24 @@ const CarItem = (props) => {
       }}
     >
       <div className="car__item shadow-md relative hover:border-blue-500 hover:cursor-pointer hover:transform hover:-translate-y-2">
-        <div className="car__img">
-          <img src={imgUrl} alt="" className="w-100" />
+        <div className="car__img h-60 flex items-center justify-center">
+          <img src={imgUrl} alt="" className="h-full" />
         </div>
 
         <div className="car__item-content mt-4">
-          <h6 className="section__title text-center">{carName}</h6>
-          <div className="rent__price text-center">
-            {price.toLocaleString("vi-VN")}.000 VNĐ
+          <h6 className="section__title text-center overflow-hidden whitespace-nowrap overflow-ellipsis">
+            {carName}
+          </h6>
+          <div className="rent__price text-center text-sm">
+            {price.toLocaleString("vi-VN")} VNĐ
           </div>
-
-          <div className="car__item-info d-flex align-items-center justify-content-between mt-3 mb-4">
-            <span className="d-flex align-items-center gap-1">
-              <i className="ri-wheelchair-line"></i> {seatType}
-            </span>
-            <span className="d-flex align-items-center gap-1">
-              <i className="ri-settings-2-line"></i> {automatic}
-            </span>
-            <span className="d-flex align-items-center gap-1">
-              <i className="ri-timer-flash-line"></i> {speed}
-            </span>
+          <div className="flex justify-center mt-4">
+            <Link
+              to={`/cars/${carName}`}
+              className="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-100 focus:outline-none focus:bg-blue-100 text-sm no-underline font-semibold"
+            >
+              Xem chi tiết sản phẩm
+            </Link>
           </div>
         </div>
       </div>

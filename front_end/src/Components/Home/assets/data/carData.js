@@ -11,8 +11,8 @@ import img08 from "../all-images/chair-img/chair2.jpg";
 const carData = [
   {
     car_id: 1,
-    brand: "Suzuki",
-    carName: "SUZUKI XL7",
+    brand: "ROG",
+    carName: "ROG Strix SCAR G18",
     imgUrl: img01,
     price: 500000,
     speed: "65km/h",
@@ -20,13 +20,13 @@ const carData = [
     seatType: "7 chỗ",
     automatic: "Tự động",
     description:
-      "Xe Suzuki XL7 2022 đời mới vận hành êm ái, là dòng xe lai MPV và SUV nên nhiều tính năng ưu việt. Xe phù hơp di chuyển trên nhiều cung đường hỗn hợp. Thuận lợi cho gia đinh đi du lịch, đi dã ngoại với thể tích chứa đồ rộng rãi. Xe ưu điểm rất tiết kiệm xăng. ",
+      "Cùng chào đón thế hệ chip Intel Gen 14 hoàn toàn mới trên những mẫu máy tính xách tay, laptop Asus Gaming ROG Strix SCAR G18 G814JIR i9 14900HX (N6007W) với sức mạnh tuyệt vời từ con chip Intel dòng HX hiệu năng cao, card rời RTX 40 series cùng hàng loạt những công nghệ hàng đầu sẽ dẫn lối cộng đồng game thủ vào những đấu trường ảo đỉnh cao nhất.",
   },
 
   {
     car_id: 2,
-    brand: "Kia",
-    carName: "KIA SORENTO",
+    brand: "HP",
+    carName: "Laptop HP 240 G9",
     imgUrl: img02,
     price: 500000,
     speed: "60km/h",
@@ -34,7 +34,7 @@ const carData = [
     seatType: "7 chỗ",
     automatic: "Tự động",
     description:
-      " KIA SORENTO 2020",
+      "Laptop HP 240 G9 i5 (6L1Y2PA) sẽ là chiếc laptop học tập - văn phòng khó lòng chối từ nếu bạn là sinh viên hoặc dân văn phòng bởi trang bị bộ vi xử lý Intel Gen 12 tân tiến cùng những thông số kỹ thuật ấn tượng.",
   },
 
   {
@@ -47,8 +47,7 @@ const carData = [
     fuel: "Xăng",
     seatType: "4 chỗ",
     automatic: "Tự động",
-    description:
-      " Xe gia đình. Ít sử dụng.",
+    description: " Xe gia đình. Ít sử dụng.",
   },
 
   {
@@ -61,14 +60,13 @@ const carData = [
     fuel: "Xăng",
     seatType: "7 chỗ",
     automatic: "Số sàn",
-    description:
-      " TOYOTA INNOVA G 2016",
+    description: " TOYOTA INNOVA G 2016",
   },
 
   {
     car_id: 5,
     brand: "Honda",
-    carName: "HONDA CITY",
+    carName: "Ghế Gaming E-Dra Yummy EGC232 V2 Black",
     imgUrl: img05,
     price: 450000,
     speed: "60km/h",
@@ -89,8 +87,7 @@ const carData = [
     fuel: "Xăng",
     seatType: "4 chỗ",
     automatic: "Số sàn",
-    description:
-      " Xe sạch đẹp số sàn, hỗ trợ rửa xe",
+    description: " Xe sạch đẹp số sàn, hỗ trợ rửa xe",
   },
 
   {
@@ -103,8 +100,7 @@ const carData = [
     fuel: "Xăng",
     seatType: "4 chỗ",
     automatic: "Tự động",
-    description:
-      " FORD RANGER XLS 2017",
+    description: " FORD RANGER XLS 2017",
   },
 
   {
@@ -162,7 +158,6 @@ const carData = [
     description:
       " Mercedes_Benz 2018( FORM MỚI KHÁC FORM 2016) Full option, xe mới đẹp long lanh. Xe mới sạch sẽ, Rada cảnh báo va chạm và phanh chủ động. Form S-Class có nước hoa tự động. Định vị toàn cầu. Không lo lạc đường. Hệ thống kiểm soát hành trình, cảnh báo hỗ trợ phanh tự động khi có va chạm. Cốp điện, cửa sổ trời, loa Burmester Xe được chăm sóc và làm đẹp định kì. ",
   },
- 
 ];
 
 export default carData;
