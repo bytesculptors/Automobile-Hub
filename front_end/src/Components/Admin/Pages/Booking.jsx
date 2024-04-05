@@ -38,7 +38,7 @@ function Booking() {
         <table className="w-full min-w-[640px] table-auto">
           <thead>
             <tr>
-              {["author", "function", "status", "employed", ""].map(
+              {["id", "time", "supplier", "buyer", "product","quantity"].map(
                 (el, index) => (
                   <th
                     key={index}
@@ -64,53 +64,34 @@ function Booking() {
                 return (
                   <tr key={name}>
                     <td className={className}>
-                      <div className="flex items-center gap-4">
-                        <img
-                          src={img}
-                          alt={name}
-                          className="rounded-full w-8 h-8"
-                        />
-                        <div>
-                          <span className="text-blue-gray font-semibold">
-                            {name}
-                          </span>
-                          <span className="text-xs font-normal text-blue-gray-500">
-                            {email}
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td className={className}>
                       <span className="text-xs font-semibold text-blue-gray-600">
-                        {job[0]}
-                      </span>
-                      <span className="text-xs font-normal text-blue-gray-500">
-                        {job[1]}
-                      </span>
-                    </td>
-                    <td className={className}>
-                      <span
-                        className={`py-0.5 px-2 text-[11px] font-medium w-fit ${
-                          online
-                            ? "bg-green-500 text-white"
-                            : "bg-blue-gray-500 text-white"
-                        }`}
-                      >
-                        {online ? "online" : "offline"}
+                        1
                       </span>
                     </td>
                     <td className={className}>
                       <span className="text-xs font-semibold text-blue-gray-600">
-                        {date}
+                        2024-04-05
                       </span>
                     </td>
                     <td className={className}>
-                      <a
-                        href="#"
-                        className="text-xs font-semibold text-blue-gray-600"
-                      >
-                        Edit
-                      </a>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        Nhà cung cấp
+                      </span>
+                    </td>
+                    <td className={className}>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        Người mua
+                      </span>
+                    </td>
+                    <td className={className}>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        Tên sản phẩm
+                      </span>
+                    </td>
+                    <td className={className}>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        8
+                      </span>
                     </td>
                   </tr>
                 );

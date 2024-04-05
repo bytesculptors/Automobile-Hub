@@ -12,18 +12,23 @@ function Buyer() {
         <table className="w-full min-w-[640px] table-auto">
           <thead>
             <tr>
-              {["author", "function", "status", "employed", ""].map(
-                (el, index) => (
-                  <th
-                    key={index}
-                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
-                  >
-                    <span className="text-[11px] font-bold uppercase text-blue-gray-400">
-                      {el}
-                    </span>
-                  </th>
-                )
-              )}
+              {[
+                "id",
+                "username",
+                "buyer name",
+                "order number",
+                "phone number",
+                "email",
+              ].map((el, index) => (
+                <th
+                  key={index}
+                  className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                >
+                  <span className="text-[11px] font-bold uppercase text-blue-gray-400">
+                    {el}
+                  </span>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -38,53 +43,32 @@ function Buyer() {
                 return (
                   <tr key={name}>
                     <td className={className}>
-                      <div className="flex items-center gap-4">
-                        <img
-                          src={img}
-                          alt={name}
-                          className="rounded-full w-8 h-8"
-                        />
-                        <div>
-                          <span className="text-blue-gray font-semibold">
-                            {name}
-                          </span>
-                          <span className="text-xs font-normal text-blue-gray-500">
-                            {email}
-                          </span>
-                        </div>
-                      </div>
+                      <div className="flex items-center gap-4">1</div>
                     </td>
                     <td className={className}>
                       <span className="text-xs font-semibold text-blue-gray-600">
-                        {job[0]}
-                      </span>
-                      <span className="text-xs font-normal text-blue-gray-500">
-                        {job[1]}
-                      </span>
-                    </td>
-                    <td className={className}>
-                      <span
-                        className={`py-0.5 px-2 text-[11px] font-medium w-fit ${
-                          online
-                            ? "bg-green-500 text-white"
-                            : "bg-blue-gray-500 text-white"
-                        }`}
-                      >
-                        {online ? "online" : "offline"}
+                        account1
                       </span>
                     </td>
                     <td className={className}>
                       <span className="text-xs font-semibold text-blue-gray-600">
-                        {date}
+                        Tên người bán
                       </span>
                     </td>
                     <td className={className}>
-                      <a
-                        href="#"
-                        className="text-xs font-semibold text-blue-gray-600"
-                      >
-                        Edit
-                      </a>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        30
+                      </span>
+                    </td>
+                    <td className={className}>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        +84912345344
+                      </span>
+                    </td>
+                    <td className={className}>
+                      <span className="text-xs font-semibold text-blue-gray-600">
+                        supplier@gmail.com
+                      </span>
                     </td>
                   </tr>
                 );

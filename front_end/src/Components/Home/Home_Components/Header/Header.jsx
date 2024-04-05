@@ -14,18 +14,9 @@ const navLinks = [
     path: "/home",
     display: "Trang chủ",
   },
-  // {
-  //   path: "/about",
-  //   display: "Giới thiệu",
-  // },
   {
     path: "/cars",
     display: "Sản phẩm",
-  },
-
-  {
-    path: "/blogs",
-    display: "Blog",
   },
   {
     path: "/contact",
