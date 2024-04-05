@@ -43,7 +43,7 @@ const OrderPage = () => {
     return (
       <div className="min-h-96 bg-gray-100 flex flex-col justify-center items-center">
         <h1 className="text-2xl font-bold mb-4">
-          Hiện không có đơn đặt hàng nào
+          Giỏ hàng hiện không có sản phẩm nào!
         </h1>
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
@@ -51,7 +51,7 @@ const OrderPage = () => {
             navigate("/cars");
           }}
         >
-          Tạo đơn đặt hàng
+          Thêm sản phẩm vào giỏ hàng
         </button>
       </div>
     );

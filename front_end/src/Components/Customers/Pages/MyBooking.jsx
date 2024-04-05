@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { BookingContext } from "../../data/BookingContext";
 import { useDispatch, useSelector } from "react-redux";
 import "./Styles/main.css";
+import { useNavigate } from "react-router-dom";
 
 function Booking() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userData = useSelector((state) => state.user);
   const { bookingData } = useContext(BookingContext);
   const user_email = userData.user_email;
@@ -49,7 +51,12 @@ function Booking() {
                 <td className="pl-0">FPT</td>
                 <td className="pl-0">Đang xử lý</td>
                 <td className="pl-0">
-                  <button className="relative text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center">
+                  <button
+                    className="relative text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center"
+                    onClick={() => {
+                      navigate("/my_booking/detail");
+                    }}
+                  >
                     <span className="flex items-center justify-center p-0 m-0 leading-none shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
