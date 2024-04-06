@@ -183,10 +183,7 @@ const Header = () => {
                         to="/login"
                         className="d-flex align-items-center gap-1 "
                       >
-                        <i className="ri-user-line text-gray-500 text-2xl"></i>
-                        <span className="text-gray-500 font-semibold">
-                          Đăng nhập
-                        </span>
+                        <i className="ri-user-shared-line text-gray-500 text-2xl"></i>
                       </Link>
                     </div>
                   ))}
