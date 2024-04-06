@@ -100,13 +100,13 @@ const Header = () => {
               className=" d-flex align-items-center justify-content-end "
             >
               <button className="text-2xl mr-6">
-                <Link className="no-underline text-black" to="/home">
+                <Link className="no-underline text-gray-500" to="/home">
                   <i className="ri-home-5-line text-gray-500"></i>
                 </Link>
               </button>
               <button className="text-2xl mr-6">
                 {user.user_id ? (
-                  <Link className="no-underline text-black" to="/order">
+                  <Link className="no-underline text-gray-500" to="/order">
                     {user.order_items.length === 0 ? (
                       <i className="ri-shopping-cart-line text-gray-500"></i>
                     ) : (
@@ -120,7 +120,7 @@ const Header = () => {
                   </Link>
                 ) : (
                   <div
-                    className="no-underline text-black"
+                    className="no-underline text-gray-500"
                     onClick={() => {
                       setOpenLoginModal(true);
                     }}
