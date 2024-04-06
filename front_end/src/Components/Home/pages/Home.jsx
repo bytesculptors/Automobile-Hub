@@ -11,6 +11,7 @@ import CarItem from "../Home_Components/UI/CarItem";
 import SeeMoreCard from "../Home_Components/UI/SeeMoreCard";
 import BlogList from "../Home_Components/UI/BlogList";
 
+
 const Home = () => {
   return (
     <Helmet title="Home">
@@ -22,40 +23,42 @@ const Home = () => {
         <Container className="mt-5">
           <Col lg="12" className="text-center mb-5">
             <h1>Khám phá những sản phẩm</h1>
-            <h5 className="h text-gray-600">đến từ các nhà cung cấp của chúng tôi</h5>
+            <h5 className="h text-gray-600">
+              đến từ các nhà cung cấp của chúng tôi
+            </h5>
           </Col>
           <Row>
-            <Col lg="12" className="text-left">
-              <h2>Toyota</h2>
-            </Col>
-            {carData.slice(0, 7).map((item) => (
+            {carData.slice(0, 11).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
-            <SeeMoreCard />
+            <SeeMoreCard></SeeMoreCard>
           </Row>
+          <Col lg="12" className="text-center mb-5">
+            <h1>Những sản phẩm nổi bật</h1>
+            <h5 className="h text-gray-600">
+              trong tháng này
+            </h5>
+          </Col>
           <Row>
-            <Col lg="12" className="text-left">
-              <h2>Mazda</h2>
-            </Col>
-            {carData.slice(0, 7).map((item) => (
+            {carData.slice(0, 11).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
-            <SeeMoreCard />
           </Row>
+          <Col lg="12" className="text-center mb-5">
+            <h1>Khám phá những sản phẩm mới</h1>
+            <h5 className="h text-gray-600">
+              trong tháng này
+            </h5>
+          </Col>
           <Row>
-            <Col lg="12" className="text-left">
-              <h2>KIA</h2>
-            </Col>
-            {carData.slice(0, 7).map((item) => (
+            {carData.slice(0, 11).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
-            <SeeMoreCard />
           </Row>
         </Container>
       </section>
 
       {/* =============== blog section =========== */}
-      
     </Helmet>
   );
 };

@@ -10,9 +10,9 @@ const CarItem = (props) => {
 
   return (
     <Col
-      lg="3"
-      md="3"
-      sm="4"
+      lg="2"
+      md="2"
+      sm="3"
       className="mb-5"
       onClick={() => {
         navigate(`/cars/${carName}`);
@@ -20,7 +20,7 @@ const CarItem = (props) => {
       }}
     >
       <div className="car__item shadow-md relative hover:border-blue-500 hover:cursor-pointer hover:transform hover:-translate-y-2">
-        <div className="car__img h-60 flex items-center justify-center">
+        <div className="car__img h-40 flex items-center justify-center">
           <img src={imgUrl} alt="" className="h-full" />
         </div>
 
@@ -36,7 +36,7 @@ const CarItem = (props) => {
               to={`/cars/${carName}`}
               className="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-100 focus:outline-none focus:bg-blue-100 text-sm no-underline font-semibold"
             >
-              Xem chi tiết sản phẩm
+              Xem chi tiết
             </Link>
           </div>
         </div>

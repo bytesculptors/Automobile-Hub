@@ -15,6 +15,7 @@ import UpdatePassword from './Pages/UpdatePassword';
 import MyBooking from './Pages/MyBooking';
 import OrderPage from '../Home/pages/OrderPage';
 import BookingDetail from './Pages/BookingDetail';
+import SupplierShowCase from './Pages/SupplierShowCase';
 function Customers() {
   function handleLoginSuccess() {
     return <Navigate to='/home' replace />;
@@ -55,9 +56,13 @@ function Customers() {
               element={<Contact onLoginSuccess={handleLoginSuccess} />}
             />
             <Route path="thong_tin" element={<MyProfile />}></Route>
+            <Route path="/supplier" element={<SupplierShowCase />}></Route>
             <Route path="/update_password" element={<UpdatePassword />}></Route>
             <Route path="/my_booking" element={<MyBooking />}></Route>
-            <Route path="/my_booking/detail" element={<BookingDetail />}></Route>
+            <Route
+              path="/my_booking/detail"
+              element={<BookingDetail />}
+            ></Route>
             <Route
               path="/"
               element={<Home onLoginSuccess={handleLoginSuccess} />}
