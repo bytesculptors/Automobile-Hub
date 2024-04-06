@@ -24,11 +24,11 @@ const CarDetails = () => {
 
   return (
     <Helmet title={singleCarItem.carName}>
-      <section className="mt-5">
+      <section className="pt-5 bg-gray-100">
         <Container>
           <Row>
             <Col lg="6" className="h-96 flex items-center justify-center">
-              <img src={singleCarItem.imgUrl} alt="" className="h-full" />
+              <img src={singleCarItem.imgUrl} alt="" className="h-full p-5 bg-white rounded-lg" />
             </Col>
 
             <Col lg="6">
