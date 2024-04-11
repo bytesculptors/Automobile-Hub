@@ -112,7 +112,7 @@ function SupplierShowCase() {
                   <label for="search" class="sr-only">
                     Search{" "}
                   </label>
-                  <form methode="get" action="#" class="relative z-50">
+                  <form methode="get" action="#" class="relative">
                     <button
                       type="submit"
                       id="searchsubmit"
