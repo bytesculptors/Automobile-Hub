@@ -186,7 +186,7 @@ const Header = () => {
                   ))
                 : (console.log(2),
                   (
-                    <div className="header__top__right d-flex align-items-center justify-content-end gap-3 hover:bg-gray-200 p-1 rounded-lg">
+                    <div className="header__top__right d-flex align-items-center justify-content-end gap-3 p-1 rounded-lg">
                       <Tooltip title="Đăng nhập tài khoản">
                         <Link
                           to="/login"

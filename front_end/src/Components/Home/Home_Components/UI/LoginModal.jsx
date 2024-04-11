@@ -65,8 +65,7 @@ const LoginModal = ({ open, handleClose }) => {
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-400 bg-white border-2 border-black shadow-md p-4">
             <div className="mb-4">
-              <p className="text-gray-600">Sign In</p>
-              <h2 className="text-xl font-bold">Join our community</h2>
+              <h2 className="text-xl font-bold">Đăng nhập</h2>
             </div>
             <form action="" onSubmit={handleSubmit}>
               <input
@@ -94,9 +93,9 @@ const LoginModal = ({ open, handleClose }) => {
             </form>
             <div class="flex items-center justify-between">
               <div>
-                <div className="text-sm text-blue-600 hover:underline">
-                  Forgot password?
-                </div>
+                <Link to='/signup' className="text-sm text-gray-500 no-underline mt-3">
+                  Bạn chưa có tài khoản?
+                </Link>
               </div>
             </div>
           </div>

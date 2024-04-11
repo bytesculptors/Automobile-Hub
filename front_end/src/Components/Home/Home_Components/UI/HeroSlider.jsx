@@ -11,6 +11,7 @@ import "../../styles/hero-slider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
 const HeroSlider = () => {
   const settings = {
     fade: true,
@@ -23,58 +24,43 @@ const HeroSlider = () => {
     pauseOnHover: false,
   };
   return (
-    <Slider {...settings} className="hero__slider">
-      <div className="slider__item slider__item-01 mt0">
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-light mb-3">
-              Chào mừng đến với Automobile Hub
-            </h4>
-            <h1 className="text-light mb-4">
-              Khám phá những sản phẩm mới!
-            </h1>
-
-            <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Đặt hàng ngay</Link>
-            </button>
+    <div className="slider__item slider__item-01 flex items-center justify-center">
+      <Container>
+        <form>
+          <label
+            for="default-search"
+            class="mb-2 text-lg font-medium text-gray-900 sr-only dark:text-gray-300"
+          >
+            Search
+          </label>
+          <div class="relative">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 text-lg"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+            <input
+              type="search"
+              id="default-search"
+              class="block pl-10 py-3 w-full text-lg text-gray-900 bg-gray-50 rounded-full border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Tìm kiếm sản phẩm"
+              required
+            />
           </div>
-        </Container>
-      </div>
-
-      {/* <div className="slider__item slider__item-02 mt0">
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-light mb-3">
-              Automobile Hub Xin Chào Mừng Quý Khách
-            </h4>
-            <h1 className="text-light mb-4">
-              Đặt xe ngay để tận hưởng chuyến đi với mức giá hấp dẫn!
-            </h1>
-
-            <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Đặt xe ngay</Link>
-            </button>
-          </div>
-        </Container>
-      </div>
-
-      <div className="slider__item slider__item-03 mt0">
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-light mb-3">
-              Automobile Hub Xin Chào Mừng Quý Khách
-            </h4>
-            <h1 className="text-light mb-4">
-              Đặt xe ngay để tận hưởng chuyến đi với mức giá hấp dẫn!
-            </h1>
-
-            <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Đặt xe ngay</Link>
-            </button>
-          </div>
-        </Container>
-      </div> */}
-    </Slider>
+        </form>
+      </Container>
+    </div>
   );
 };
 
