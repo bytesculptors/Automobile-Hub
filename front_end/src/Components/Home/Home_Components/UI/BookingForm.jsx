@@ -8,6 +8,9 @@ import { addOrderItem } from "../../../../Redux/userSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import LoginModal from "./LoginModal";
+import {
+  Button,
+} from "@material-tailwind/react";
 const BookingForm = (props) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
@@ -116,8 +119,11 @@ const BookingForm = (props) => {
           </div>
         </div>
       </Form>
-      <div className="payment text-end">
-        <button onClick={submitHandler}>Thêm vào đơn đặt hàng</button>
+      <div className="payment text-end ">
+        <Button color="gray" className="w-52 bg-black" onClick={submitHandler}>
+          Add to Cart
+        </Button>
+        {/* <button className="bg-black">ADD TO CART</button> */}
       </div>
       <div>
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -131,9 +137,12 @@ const BookingForm = (props) => {
           </Alert>
         </Snackbar>
       </div>
-      <LoginModal open={openLoginModal} handleClose={() => {
-        setOpenLoginModal(false);
-      }} />
+      <LoginModal
+        open={openLoginModal}
+        handleClose={() => {
+          setOpenLoginModal(false);
+        }}
+      />
     </div>
   );
 };
